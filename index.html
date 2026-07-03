@@ -183,6 +183,49 @@ h3{
   font-size:11px;
 }
 
+.quickToggle{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#050505;
+  color:var(--gold);
+  border:1px solid var(--gold2);
+  border-radius:10px;
+  padding:8px;
+  margin:0;
+  font-size:12px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.quickToggle:hover{
+  transform:translateY(-3px);
+  box-shadow:0 6px 14px rgba(255,215,0,.30);
+}
+
+.quickArrow{
+  transition:transform .2s ease;
+}
+
+.quickLinksContent{
+  overflow:hidden;
+  max-height:0;
+  opacity:0;
+  transition:max-height .25s ease, opacity .2s ease, margin-top .2s ease;
+  margin-top:0;
+}
+
+.quickLinksContent.open{
+  max-height:260px;
+  opacity:1;
+  margin-top:7px;
+}
+
+.quickToggle.open .quickArrow{
+  transform:rotate(180deg);
+}
+
 .btn{
   display:block;
   text-align:center;
@@ -399,11 +442,17 @@ p{
 </div>
 
 <div class="card">
-<h2>🔗 Quick Links</h2>
-<a class="btn" href="https://discord.gg/Atk2GKfgU" target="_blank" rel="noopener">💬 Join Our Discord</a>
-<a class="btn dark" href="https://www.twitch.tv/dasoulking98" target="_blank" rel="noopener">🔴 Watch ACFA on Twitch</a>
-<button class="copyBtn" id="copyClubBtn" onclick="copyClubLink()">📋 Copy ACFA Club Link</button>
-<a class="btn dark" href="https://www.chess.com/variants" target="_blank" rel="noopener">♞ Play Variants</a>
+<button class="quickToggle" id="quickToggle" onclick="toggleQuickLinks()">
+  <span>🔗 Quick Links</span>
+  <span class="quickArrow">⌄</span>
+</button>
+
+<div class="quickLinksContent" id="quickLinksContent">
+  <a class="btn" href="https://discord.gg/Atk2GKfgU" target="_blank" rel="noopener">💬 Join Our Discord</a>
+  <a class="btn dark" href="https://www.twitch.tv/dasoulking98" target="_blank" rel="noopener">🔴 Watch ACFA on Twitch</a>
+  <button class="copyBtn" id="copyClubBtn" onclick="copyClubLink()">📋 Copy ACFA Club Link</button>
+  <a class="btn dark" href="https://www.chess.com/variants" target="_blank" rel="noopener">♞ Play Variants</a>
+</div>
 </div>
 
 <div class="card">
@@ -517,6 +566,13 @@ function createCrowns(){
   }
 }
 createCrowns();
+
+function toggleQuickLinks(){
+  const content = document.getElementById("quickLinksContent");
+  const toggle = document.getElementById("quickToggle");
+  content.classList.toggle("open");
+  toggle.classList.toggle("open");
+}
 
 async function copyClubLink(){
   const clubLink = "https://www.chess.com/club/and-chess-for-all-official";
