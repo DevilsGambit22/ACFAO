@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>And Chess For All Official</title>
+<title>And Chess For All Official Sidebar</title>
 
 <style>
 :root{
@@ -11,11 +11,13 @@
   --gold2:#d4af37;
   --text:#f5f5f5;
   --muted:#bbbbbb;
-  --panel:#111111;
-  --black:#050505;
+  --panel:#101010;
+  --line:rgba(212,175,55,.75);
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 html,body{
   margin:0;
@@ -24,8 +26,7 @@ html,body{
   min-height:0;
   height:auto;
   background:transparent;
-  overflow-x:hidden;
-  overflow-y:hidden;
+  overflow:hidden;
   color:var(--text);
   font-family:Arial,sans-serif;
 }
@@ -34,100 +35,58 @@ body{
   display:block;
 }
 
-.wrap{
-  position:relative;
+.sidebar{
   width:100%;
-  max-width:100%;
+  max-width:310px;
   margin:0 auto;
-  padding:10px;
+  padding:7px;
   border:2px solid var(--gold2);
   border-radius:18px;
-  background:radial-gradient(circle at top,#3a2305 0%,#050505 58%,#000 100%);
-  box-shadow:0 0 14px rgba(212,175,55,.55);
+  background:radial-gradient(circle at top,#342003 0%,#050505 58%,#000 100%);
+  box-shadow:0 0 12px rgba(212,175,55,.65);
   overflow:hidden;
 }
 
-.crownRain{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  overflow:hidden;
-  z-index:0;
-}
-
-.crown{
-  position:absolute;
-  top:-50px;
-  color:var(--gold);
-  text-shadow:0 0 10px var(--gold2);
-  animation:fallCrown linear infinite;
-  opacity:.45;
-}
-
-@keyframes fallCrown{
-  from{transform:translateY(-60px) rotate(0deg)}
-  to{transform:translateY(1150px) rotate(360deg)}
-}
-
-.wrap > *:not(.crownRain){
-  position:relative;
-  z-index:1;
-}
-
-h1,h2,h3{
-  color:var(--gold);
+.header{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:8px 7px;
   text-align:center;
-  text-shadow:0 0 8px var(--gold2);
+  background:rgba(0,0,0,.72);
+  margin-bottom:7px;
 }
 
 h1{
-  font-size:23px;
-  margin:8px 0 8px;
+  margin:0 0 4px;
+  color:var(--gold);
+  font-size:16px;
   line-height:1.15;
+  text-shadow:0 0 8px var(--gold2);
 }
 
-h2{
-  font-size:18px;
-  margin:0 0 9px;
-  line-height:1.2;
-}
-
-h3{
-  font-size:15px;
-  margin:7px 0;
-  line-height:1.25;
-}
-
-.card{
-  background:rgba(17,17,17,.95);
-  border:1px solid var(--gold2);
-  border-radius:14px;
-  padding:11px;
-  margin:10px 0;
-  box-shadow:0 0 9px rgba(212,175,55,.22);
-  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-}
-
-.card:hover{
-  transform:translateY(-5px);
-  border-color:var(--gold);
-  box-shadow:0 8px 18px rgba(212,175,55,.35);
+.tagline{
+  margin:0;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.35;
 }
 
 .marquee{
   overflow:hidden;
   white-space:nowrap;
-  background:#000;
   border:1px solid var(--gold2);
   border-radius:12px;
+  background:#000;
+  margin-bottom:7px;
 }
 
 .marquee span{
   display:inline-block;
-  padding:8px;
+  padding:6px 8px;
   color:var(--gold);
+  font-size:11px;
   font-weight:bold;
-  animation:scroll 17s linear infinite;
+  animation:scroll 18s linear infinite;
 }
 
 @keyframes scroll{
@@ -135,45 +94,55 @@ h3{
   to{transform:translateX(-100%)}
 }
 
-.skyBanner{
-  text-align:center;
-  padding:11px;
-  border:1px solid var(--gold);
+.board{
+  background:rgba(16,16,16,.94);
+  border:1px solid var(--line);
   border-radius:14px;
-  margin:10px 0;
-  background:linear-gradient(135deg,#2b1903,#050505);
-  box-shadow:0 0 10px rgba(212,175,55,.4);
-  transition:transform .22s ease, box-shadow .22s ease;
+  padding:8px;
+  margin:7px 0;
+  box-shadow:0 0 8px rgba(212,175,55,.25);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 
-.skyBanner:hover{
-  transform:translateY(-5px);
-  box-shadow:0 8px 18px rgba(212,175,55,.35);
+.board:hover{
+  transform:translateY(-4px);
+  box-shadow:0 7px 16px rgba(212,175,55,.38);
+  border-color:var(--gold);
 }
 
-.skyBanner p{
-  margin:6px 0 0;
-  line-height:1.45;
+h2{
+  color:var(--gold);
   font-size:13px;
+  line-height:1.2;
+  text-align:center;
+  margin:0 0 7px;
+  text-shadow:0 0 6px var(--gold2);
+}
+
+p{
+  font-size:11px;
+  line-height:1.4;
+  margin:5px 0;
 }
 
 .btn{
   display:block;
   text-align:center;
-  background:var(--gold2);
-  color:#050505;
   text-decoration:none;
   font-weight:bold;
-  padding:10px;
-  border-radius:12px;
-  margin:8px 0;
-  box-shadow:0 0 9px rgba(255,215,0,.45);
+  font-size:11px;
+  padding:7px 6px;
+  border-radius:10px;
+  margin:5px 0;
+  background:var(--gold2);
+  color:#050505;
+  box-shadow:0 0 7px rgba(255,215,0,.45);
   transition:transform .18s ease, box-shadow .18s ease;
 }
 
 .btn:hover{
   transform:translateY(-3px);
-  box-shadow:0 6px 14px rgba(255,215,0,.45);
+  box-shadow:0 6px 14px rgba(255,215,0,.35);
 }
 
 .btn.dark{
@@ -185,29 +154,44 @@ h3{
 .stat{
   display:flex;
   justify-content:space-between;
-  border-bottom:1px solid #333;
-  padding:6px 0;
+  align-items:center;
   gap:8px;
-  font-size:13px;
+  border-bottom:1px solid rgba(255,255,255,.13);
+  padding:5px 0;
+  font-size:11px;
 }
 
-.stat:last-child{border-bottom:none}
+.stat:last-child{
+  border-bottom:0;
+}
+
+.stat span{
+  color:var(--gold);
+  font-weight:bold;
+}
 
 .member{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:7px;
   background:#050505;
-  border:1px solid #333;
+  border:1px solid rgba(212,175,55,.55);
   border-radius:12px;
-  padding:8px;
-  margin:7px 0;
-  min-width:0;
+  padding:6px;
+  margin:6px 0;
+  min-height:44px;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.member:hover{
+  transform:translateY(-4px);
+  box-shadow:0 7px 13px rgba(212,175,55,.33);
+  border-color:var(--gold);
 }
 
 .member img{
-  width:38px;
-  height:38px;
+  width:31px;
+  height:31px;
   border-radius:50%;
   border:1px solid var(--gold2);
   object-fit:cover;
@@ -216,46 +200,85 @@ h3{
 
 .member div{
   min-width:0;
-  overflow:hidden;
+  flex:1;
 }
 
 .member a{
   color:var(--gold);
   text-decoration:none;
-  overflow-wrap:anywhere;
+  font-size:11px;
+  display:block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+small{
+  color:var(--muted);
+  font-size:10px;
 }
 
 .badge{
-  margin-left:auto;
+  flex:0 0 auto;
   background:var(--gold2);
   color:#050505;
-  font-size:10px;
-  padding:4px 7px;
-  border-radius:8px;
+  font-size:9px;
+  padding:3px 5px;
+  border-radius:7px;
   font-weight:bold;
   white-space:nowrap;
-  flex:0 0 auto;
 }
 
-small{color:var(--muted)}
+.radio-note{
+  text-align:center;
+  margin-top:0;
+}
+
+audio{
+  display:none;
+}
+
+.now-playing{
+  text-align:center;
+  background:#050505;
+  border:1px solid rgba(212,175,55,.65);
+  border-radius:10px;
+  padding:6px;
+  margin:6px 0;
+}
+
+#trackTitle{
+  margin:2px 0 0;
+  color:var(--gold);
+  font-size:12px;
+  line-height:1.2;
+  text-align:center;
+}
+
+.music-controls{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:4px;
+  margin:5px 0;
+}
 
 button{
   width:100%;
-  padding:10px;
-  border:none;
-  border-radius:12px;
+  border:0;
+  border-radius:9px;
   background:var(--gold2);
   color:#050505;
+  font-size:10px;
   font-weight:bold;
-  margin:5px 0;
+  padding:7px 3px;
   cursor:pointer;
-  box-shadow:0 0 8px rgba(255,215,0,.3);
+  box-shadow:0 0 6px rgba(255,215,0,.28);
   transition:transform .18s ease, box-shadow .18s ease;
 }
 
 button:hover{
   transform:translateY(-3px);
-  box-shadow:0 6px 14px rgba(255,215,0,.38);
+  box-shadow:0 6px 12px rgba(255,215,0,.28);
 }
 
 button.secondary{
@@ -264,240 +287,178 @@ button.secondary{
   border:1px solid var(--gold2);
 }
 
-.now-playing{
-  text-align:center;
-  background:#050505;
-  border:1px solid var(--gold2);
-  border-radius:12px;
-  padding:9px;
-  margin:9px 0;
-}
-
-.music-controls{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:6px;
-  margin:8px 0;
-}
-
-.music-controls button{
-  font-size:12px;
-  padding:9px 4px;
+#progressBar,.music-row input{
+  width:100%;
+  accent-color:var(--gold2);
 }
 
 .music-row{
   display:flex;
   align-items:center;
-  gap:8px;
-}
-
-.music-row input{
-  flex:1;
-  accent-color:var(--gold2);
-}
-
-#progressBar{
-  width:100%;
-  accent-color:var(--gold2);
+  gap:6px;
+  font-size:11px;
 }
 
 .time-row{
   display:flex;
   justify-content:space-between;
-  margin-top:4px;
+  margin-top:2px;
 }
 
 .activeMusicMode{
-  outline:2px solid #fff2a8;
-  box-shadow:0 0 10px var(--gold);
-}
-
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  z-index:999;
+  outline:1px solid #fff2a8;
+  box-shadow:0 0 9px var(--gold);
 }
 
 .footer{
   text-align:center;
   color:#999;
-  font-size:11px;
-  margin:10px 0 0;
-  padding:0 0 2px;
-  line-height:1.45;
+  font-size:10px;
+  line-height:1.35;
+  margin:8px 0 0;
+  padding:7px 5px 1px;
+  border-top:1px solid rgba(212,175,55,.3);
 }
 
-p{
-  font-size:13px;
-  line-height:1.5;
+canvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:99;
 }
 
-@media(max-width:480px){
-  .wrap{
-    border-radius:18px;
-    padding:9px;
+@media(max-width:340px){
+  .sidebar{
+    max-width:100%;
+    border-radius:16px;
+    padding:6px;
   }
-  h1{font-size:21px}
-  h2{font-size:17px}
+
+  h1{
+    font-size:15px;
+  }
+
+  .board{
+    padding:7px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrap">
-<div class="crownRain" id="crownRain"></div>
+<div class="sidebar" id="sidebar">
 
-<h1>♟ And Chess For All Official</h1>
+  <div class="header">
+    <h1>♟ And Chess For All Official</h1>
+    <p class="tagline">Every player belongs. Every move matters.</p>
+  </div>
 
-<div class="marquee">
-<span>Every Player Belongs • Every Move Matters • Casual Chess • Daily Matches • Vote Chess • Events • Join Our Discord • Play Variants</span>
-</div>
+  <div class="marquee">
+    <span>Good afternoon, ACFA • Casual Chess • Daily Matches • Vote Chess • Events • Join Our Discord • Play Variants</span>
+  </div>
 
-<div class="skyBanner">
-  <h2 id="timeGreeting">Loading greeting...</h2>
-  <p id="themeMessage">Preparing the board...</p>
-</div>
+  <div class="board">
+    <h2>🔗 Quick Links</h2>
+    <a class="btn" href="https://discord.gg/Atk2GKfgU" target="_blank" rel="noopener">💬 Join Our Discord</a>
+    <a class="btn dark" href="https://www.chess.com/variants" target="_blank" rel="noopener">♞ Play Variants</a>
+  </div>
 
-<div class="card">
-<h2>🔗 Quick Links</h2>
-<a class="btn" href="https://discord.gg/Atk2GKfgU" target="_blank" rel="noopener">💬 Join Our Discord</a>
-<a class="btn dark" href="https://www.chess.com/variants" target="_blank" rel="noopener">♞ Play Variants</a>
-</div>
+  <div class="board">
+    <h2>📊 Live Club Stats</h2>
+    <div class="stat"><b>Total Members</b><span id="totalMembers">Loading...</span></div>
+    <div class="stat"><b>Recently Active</b><span id="activeMembers">Loading...</span></div>
+    <div class="stat"><b>Titled Players</b><span id="titledCount">Loading...</span></div>
+  </div>
 
-<div class="card">
-<h2>📊 Live Club Stats</h2>
-<div class="stat"><b>Total Members</b><span id="totalMembers">Loading...</span></div>
-<div class="stat"><b>Recently Active</b><span id="activeMembers">Loading...</span></div>
-<div class="stat"><b>Titled Players</b><span id="titledCount">Loading...</span></div>
-</div>
+  <div class="board">
+    <h2>🆕 Newest Members</h2>
+    <div id="memberBoard">Loading newest members...</div>
+  </div>
 
-<div class="card">
-<h2>🆕 Newest Members</h2>
-<div id="memberBoard">Loading newest members...</div>
-</div>
+  <div class="board">
+    <h2>♚ Titled Player Board</h2>
+    <div id="titledBoard">Checking titled players...</div>
+  </div>
 
-<div class="card">
-<h2>♚ Titled Player Board</h2>
-<div id="titledBoard">Checking titled players...</div>
-</div>
+  <div class="board">
+    <h2>🎵 ACFA Official Radio</h2>
+    <p class="radio-note">Choose your soundtrack. Chess now has background music, because silence apparently resigned.</p>
 
-<div class="card">
-<h2>🎵 ACFA Official Radio</h2>
-<p style="text-align:center;margin-top:0;">Choose your soundtrack. Chess now has background music, because apparently silence lost on time.</p>
+    <audio id="clubMusic" preload="none"></audio>
 
-<audio id="clubMusic" preload="none"></audio>
+    <div class="now-playing">
+      <small>Now Playing</small>
+      <div id="trackTitle">Loading track...</div>
+    </div>
 
-<div class="now-playing">
-  <small>Now Playing</small>
-  <h3 id="trackTitle">Loading track...</h3>
-</div>
+    <div class="music-controls">
+      <button onclick="prevTrack()">⏮</button>
+      <button id="musicBtn" onclick="toggleMusic()">▶</button>
+      <button onclick="nextTrack()">⏭</button>
+    </div>
 
-<div class="music-controls">
-  <button onclick="prevTrack()">⏮</button>
-  <button id="musicBtn" onclick="toggleMusic()">▶</button>
-  <button onclick="nextTrack()">⏭</button>
-</div>
+    <input id="progressBar" type="range" min="0" max="100" value="0" step="1" oninput="seekMusic(this.value)">
 
-<input id="progressBar" type="range" min="0" max="100" value="0" step="1" oninput="seekMusic(this.value)">
+    <div class="time-row">
+      <small id="currentTime">0:00</small>
+      <small id="durationTime">0:00</small>
+    </div>
 
-<div class="time-row">
-  <small id="currentTime">0:00</small>
-  <small id="durationTime">0:00</small>
-</div>
+    <div class="music-controls">
+      <button id="shuffleBtn" onclick="toggleShuffle()">🔀</button>
+      <button id="repeatBtn" onclick="toggleRepeat()">🔁</button>
+      <button onclick="stopMusic()">⏹</button>
+    </div>
 
-<div class="music-controls">
-  <button id="shuffleBtn" onclick="toggleShuffle()">🔀 Shuffle</button>
-  <button id="repeatBtn" onclick="toggleRepeat()">🔁 Repeat</button>
-  <button onclick="stopMusic()">⏹ Stop</button>
-</div>
+    <div class="music-row">
+      <span>🔈</span>
+      <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.45" oninput="setVolume(this.value)">
+      <span>🔊</span>
+    </div>
 
-<div class="music-row">
-  <span>🔈</span>
-  <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.45" oninput="setVolume(this.value)">
-  <span>🔊</span>
-</div>
+    <small id="musicStatus">Music ready</small>
+  </div>
 
-<small id="musicStatus">Music ready</small>
-</div>
+  <div class="board">
+    <h2>🎉 Celebrate</h2>
+    <div class="music-controls">
+      <button onclick="confetti()">Gold</button>
+      <button onclick="chessBurst()">Pieces</button>
+      <button class="secondary" onclick="fireworks()">Fire</button>
+    </div>
+  </div>
 
-<div class="card">
-<h2>🎉 Celebrate</h2>
-<button onclick="confetti()">Golden Confetti</button>
-<button onclick="chessBurst()">Chess Piece Burst</button>
-<button class="secondary" onclick="fireworks()">ACFA Fireworks</button>
-</div>
-
-<div class="footer">
-Created by @DevilsGambit22<br>
-© 2026 And Chess For All Official
-</div>
+  <div class="footer">
+    Created by @DevilsGambit22<br>
+    © 2026 And Chess For All Official
+  </div>
 
 </div>
 
 <canvas id="canvas"></canvas>
 
 <script>
-const CLUB_SLUG = "and-chess-for-all-official";
+const CLUB_SLUG = "and-chess-for-all-1";
 const API = "https://api.chess.com/pub";
 const MEMBER_LIMIT = 3;
-const TITLED_LIMIT = 50;
+const TITLED_LIMIT = 35;
 const TITLES = ["GM","WGM","IM","WIM","FM","WFM","NM","CM","WCM"];
 const DEFAULT_AVATAR = "https://www.chess.com/bundles/web/images/noavatar_l.84a92436.gif";
 
-const greeting = document.getElementById("timeGreeting");
-const message = document.getElementById("themeMessage");
-
-function updateParentHeight(){
-  const height = document.documentElement.scrollHeight;
-  try{
-    window.parent.postMessage({type:"acfaSidebarHeight",height:height},"*");
-  }catch(e){}
-}
-
-window.addEventListener("load",updateParentHeight);
-window.addEventListener("resize",updateParentHeight);
-setInterval(updateParentHeight,1200);
-
-function updateGreeting(){
+function setGreeting(){
   const hour = new Date().getHours();
-
-  if(hour >= 7 && hour < 12){
-    greeting.textContent = "☀️ Good Morning, ACFA";
-    message.textContent = "The board is open and the first move is waiting.";
-  }else if(hour >= 12 && hour < 19){
-    greeting.textContent = "🌇 Good Afternoon, ACFA";
-    message.textContent = "Perfect time for a game, unless someone donates their queen to charity.";
-  }else if(hour >= 19 && hour <= 23){
-    greeting.textContent = "🌙 Good Evening, ACFA";
-    message.textContent = "The night is quiet, the clocks are ticking, and the blunders are lurking.";
-  }else{
-    greeting.textContent = "♟️ Late Night Chess";
-    message.textContent = "Quiet hours, sharp moves, questionable life choices.";
-  }
+  const line = document.querySelector(".marquee span");
+  let greeting = "Late night chess";
+  if(hour >= 7 && hour < 12) greeting = "Good morning, ACFA";
+  else if(hour >= 12 && hour < 19) greeting = "Good afternoon, ACFA";
+  else if(hour >= 19 && hour <= 23) greeting = "Good evening, ACFA";
+  line.textContent = greeting + " • Casual Chess • Daily Matches • Vote Chess • Events • Join Our Discord • Play Variants";
 }
-
-updateGreeting();
-setInterval(updateGreeting,60000);
-
-function createCrowns(){
-  const crownRain = document.getElementById("crownRain");
-  for(let i = 0; i < 18; i++){
-    const crown = document.createElement("div");
-    crown.className = "crown";
-    crown.textContent = "👑";
-    crown.style.left = Math.random() * 100 + "%";
-    crown.style.fontSize = (Math.random() * 10 + 12) + "px";
-    crown.style.animationDuration = (Math.random() * 12 + 16) + "s";
-    crown.style.animationDelay = (Math.random() * 16) + "s";
-    crownRain.appendChild(crown);
-  }
-}
-createCrowns();
+setGreeting();
+setInterval(setGreeting,60000);
 
 async function getJSON(url){
   const res = await fetch(url,{cache:"no-store"});
@@ -527,7 +488,6 @@ async function loadClubMembers(){
   document.getElementById("activeMembers").textContent = weekly.length;
 
   renderMembers(newestMembers);
-  updateParentHeight();
   loadProfiles(members);
 }
 
@@ -551,7 +511,7 @@ function renderMembers(members){
     item.innerHTML = `
       <img src="${DEFAULT_AVATAR}" alt="${username}">
       <div>
-        <b><a href="https://www.chess.com/member/${username}" target="_blank" rel="noopener">${username}</a></b><br>
+        <b><a href="https://www.chess.com/member/${username}" target="_blank" rel="noopener">${username}</a></b>
         <small>Joined: ${joined}</small>
       </div>
       <span class="badge">${badgeText}</span>
@@ -583,7 +543,6 @@ async function loadProfiles(members){
 
   document.getElementById("titledCount").textContent = titled.length;
   renderTitled(titled);
-  updateParentHeight();
 }
 
 function renderTitled(players){
@@ -595,13 +554,13 @@ function renderTitled(players){
     return;
   }
 
-  players.forEach(p=>{
+  players.slice(0,5).forEach(p=>{
     const avatar = p.avatar || DEFAULT_AVATAR;
     board.innerHTML += `
       <div class="member">
         <img src="${avatar}" alt="${p.username}">
         <div>
-          <b><a href="${p.url}" target="_blank" rel="noopener">${p.username}</a></b><br>
+          <b><a href="${p.url}" target="_blank" rel="noopener">${p.username}</a></b>
           <small>${p.name || "Chess.com Player"}</small>
         </div>
         <span class="badge">${p.title}</span>
@@ -616,7 +575,6 @@ loadClubMembers().catch(()=>{
   document.getElementById("totalMembers").textContent = "Error";
   document.getElementById("activeMembers").textContent = "Error";
   document.getElementById("titledCount").textContent = "Error";
-  updateParentHeight();
 });
 
 const tracks = [
@@ -653,16 +611,15 @@ function loadTrack(index){
   trackTitle.textContent = tracks[currentTrack].title;
   musicStatus.textContent = "Selected: " + tracks[currentTrack].title;
   localStorage.setItem("acfaOfficialCurrentTrack",currentTrack);
-  updateParentHeight();
 }
 
 function toggleMusic(){
   if(music.paused){
     music.play().then(()=>{
       musicBtn.textContent = "⏸";
-      musicStatus.textContent = "Playing: " + tracks[currentTrack].title;
+      musicStatus.textContent = "Playing";
     }).catch(()=>{
-      musicStatus.textContent = "Track not found. Check your repository filenames.";
+      musicStatus.textContent = "Track not found. Check file names.";
     });
   }else{
     music.pause();
@@ -749,7 +706,6 @@ music.addEventListener("timeupdate",()=>{
 
 music.addEventListener("loadedmetadata",()=>{
   durationTimeEl.textContent = formatTime(music.duration);
-  updateParentHeight();
 });
 
 music.addEventListener("ended",()=>{
@@ -786,14 +742,14 @@ window.addEventListener("resize",resize);
 
 function confetti(){
   let pieces = [];
-  for(let i=0;i<150;i++){
+  for(let i=0;i<120;i++){
     pieces.push({
       x:Math.random()*canvas.width,
       y:-20,
-      vx:(Math.random()-.5)*7,
-      vy:Math.random()*5+3,
-      r:Math.random()*5+2,
-      life:150
+      vx:(Math.random()-.5)*5,
+      vy:Math.random()*4+3,
+      r:Math.random()*4+2,
+      life:120
     });
   }
   animate(pieces,"dot");
@@ -801,16 +757,16 @@ function confetti(){
 
 function fireworks(){
   let pieces = [];
-  for(let i=0;i<220;i++){
+  for(let i=0;i<160;i++){
     let a = Math.random()*Math.PI*2;
-    let s = Math.random()*7+2;
+    let s = Math.random()*6+2;
     pieces.push({
       x:canvas.width/2,
       y:canvas.height/2,
       vx:Math.cos(a)*s,
       vy:Math.sin(a)*s,
       r:Math.random()*4+2,
-      life:120
+      life:110
     });
   }
   animate(pieces,"dot");
@@ -819,16 +775,16 @@ function fireworks(){
 function chessBurst(){
   let icons = ["♔","♕","♖","♗","♘","♙"];
   let pieces = [];
-  for(let i=0;i<80;i++){
+  for(let i=0;i<70;i++){
     let a = Math.random()*Math.PI*2;
-    let s = Math.random()*6+2;
+    let s = Math.random()*5+2;
     pieces.push({
       x:canvas.width/2,
       y:canvas.height/2,
       vx:Math.cos(a)*s,
       vy:Math.sin(a)*s,
       icon:icons[Math.floor(Math.random()*icons.length)],
-      life:120
+      life:110
     });
   }
   animate(pieces,"icon");
@@ -845,10 +801,10 @@ function animate(pieces,type){
       p.y += p.vy;
       p.vy += .05;
       p.life--;
-      ctx.globalAlpha = Math.max(p.life/120,0);
+      ctx.globalAlpha = Math.max(p.life/110,0);
 
       if(type === "icon"){
-        ctx.font = "26px Arial";
+        ctx.font = "22px Arial";
         ctx.fillStyle = "#ffd700";
         ctx.fillText(p.icon,p.x,p.y);
       }else{
@@ -862,7 +818,7 @@ function animate(pieces,type){
     ctx.globalAlpha = 1;
     frame++;
 
-    if(frame < 170) requestAnimationFrame(draw);
+    if(frame < 140) requestAnimationFrame(draw);
     else ctx.clearRect(0,0,canvas.width,canvas.height);
   }
 
