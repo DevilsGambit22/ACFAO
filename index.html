@@ -79,9 +79,12 @@ input:focus-visible{
 .crown{
   position:absolute;
   top:-60px;
-  color:var(--gold);
-  opacity:.28;
-  text-shadow:0 0 10px var(--gold2);
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--gold);
+  opacity:.24;
+  box-shadow:0 0 10px var(--gold2);
   animation:fallCrown linear infinite;
 }
 
@@ -103,10 +106,6 @@ h1{
   line-height:1.2;
 }
 
-h1::before{
-  content:"â";
-  margin-right:5px;
-}
 
 h2{
   font-size:13px;
@@ -198,10 +197,15 @@ small{
 
 .sectionHead h2::before,
 .collapseButton span:first-child::before{
-  content:"â";
-  margin-right:5px;
-  color:var(--gold3);
-  font-size:.72em;
+  content:"";
+  display:inline-block;
+  width:6px;
+  height:6px;
+  margin-right:6px;
+  border:1px solid var(--gold3);
+  border-radius:2px;
+  vertical-align:1px;
+  box-shadow:0 0 6px rgba(255,242,168,.65);
 }
 
 .statusDot{
@@ -759,7 +763,7 @@ canvas{
   </div>
 
   <div class="marquee" aria-label="ACFA club features">
-    <span>Every Player Belongs â¢ Every Move Matters â¢ Daily Matches â¢ Vote Chess â¢ Arenas â¢ Community â¢ ACFA Radio</span>
+    <span>Every Player Belongs - Every Move Matters - Daily Matches - Vote Chess - Arenas - Community - ACFA Radio</span>
   </div>
 
   <section class="skyBanner">
@@ -793,22 +797,22 @@ canvas{
 
     <div class="statsGrid">
       <div class="stat">
-        <strong id="memberCount">â</strong>
+        <strong id="memberCount">-</strong>
         <span>Club members</span>
       </div>
 
       <div class="stat">
-        <strong id="upcomingCount">â</strong>
+        <strong id="upcomingCount">-</strong>
         <span>Upcoming matches</span>
       </div>
 
       <div class="stat">
-        <strong id="activeCount">â</strong>
+        <strong id="activeCount">-</strong>
         <span>Active matches</span>
       </div>
 
       <div class="stat">
-        <strong id="eventCount">â</strong>
+        <strong id="eventCount">-</strong>
         <span>Events this month</span>
       </div>
     </div>
@@ -816,9 +820,9 @@ canvas{
 
   <section class="card calendarCard">
     <div class="calendarTop">
-      <button id="prevMonth" aria-label="Previous month">&lsaquo;</button>
+      <button id="prevMonth" aria-label="Previous month">&lt;</button>
       <h2 id="calendarTitle">Calendar</h2>
-      <button id="nextMonth" aria-label="Next month">&rsaquo;</button>
+      <button id="nextMonth" aria-label="Next month">&gt;</button>
     </div>
 
     <div class="weekdays" aria-hidden="true">
@@ -949,7 +953,7 @@ canvas{
 
   <div class="footer">
     Created by @DevilsGambit22<br>
-    Â© 2026 And Chess For All Official
+    (c) 2026 And Chess For All Official
   </div>
 </main>
 
@@ -1106,9 +1110,7 @@ function createCrownRain() {
     const crown = document.createElement("div");
 
     crown.className = "crown";
-    crown.textContent = "â";
     crown.style.left = `${Math.random() * 100}%`;
-    crown.style.fontSize = `${11 + Math.random() * 9}px`;
     crown.style.animationDuration = `${18 + Math.random() * 15}s`;
     crown.style.animationDelay = `${Math.random() * 15}s`;
 
@@ -1704,7 +1706,7 @@ async function initializeLiveData() {
   setDataStatus(successCount > 0);
 
   if (results[0].status === "rejected") {
-    $("memberCount").textContent = "â";
+    $("memberCount").textContent = "-";
 
     $("memberBoard").className = "emptyState";
     $("memberBoard").textContent =
@@ -1716,8 +1718,8 @@ async function initializeLiveData() {
   }
 
   if (results[1].status === "rejected") {
-    $("upcomingCount").textContent = "â";
-    $("activeCount").textContent = "â";
+    $("upcomingCount").textContent = "-";
+    $("activeCount").textContent = "-";
 
     $("matchBoard").className = "emptyState";
     $("matchBoard").textContent =
@@ -2288,12 +2290,12 @@ function acfaFireworks() {
 
 function chessPieceBurst() {
   const icons = [
-    "â",
-    "â",
-    "â",
-    "â",
-    "â",
-    "â"
+    "K",
+    "Q",
+    "R",
+    "B",
+    "N",
+    "P"
   ];
 
   const centerX =
