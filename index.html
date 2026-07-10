@@ -795,60 +795,66 @@ function formatDateFromUnix(timestamp){
 }
 
 /*
-  Image priority:
-  1. Explicit custom image
-  2. Stream keywords in match/event title
-  3. Vote Chess
-  4. Arena
-  5. Swiss
-  6. Daily/team match
-  7. ACFA hero fallback
+  Event-image rules:
+  1. An explicitly assigned custom image always wins.
+  2. Live Stream is the only category detected from title keywords.
+  3. Every other calendar image is selected from the event type.
+  4. Unknown event types use the ACFA hero image.
 */
 function getEventImage(event={}){
-  if(event.image) return event.image;
+  if(event.image){
+    return event.image;
+  }
 
-  const text = [
-    event.title,
-    event.name,
-    event.type,
-    event.status
-  ].filter(Boolean).join(" ").toLowerCase();
+  const title = String(
+    event.title ||
+    event.name ||
+    ""
+  ).toLowerCase();
 
+  /*
+    Live streams are identified from the match/event title.
+    Examples:
+    - ACFA Live Stream
+    - Friday Twitch Stream
+    - Streaming with the ACFA Family
+  */
   if(
-    text.includes("livestream") ||
-    text.includes("live stream") ||
-    text.includes("stream") ||
-    text.includes("twitch")
+    title.includes("livestream") ||
+    title.includes("live stream") ||
+    title.includes("stream") ||
+    title.includes("twitch")
   ){
     return CONFIG.eventImages.liveStream;
   }
 
-  if(
-    text.includes("vote chess") ||
-    text.includes("vote-chess") ||
-    text.includes("votechess")
-  ){
-    return CONFIG.eventImages.voteChess;
-  }
+  const type = String(event.type || "")
+    .trim()
+    .toLowerCase();
 
-  if(text.includes("arena")){
-    return CONFIG.eventImages.arena;
-  }
+  switch(type){
+    case "vote chess":
+    case "vote-chess":
+    case "votechess":
+      return CONFIG.eventImages.voteChess;
 
-  if(text.includes("swiss")){
-    return CONFIG.eventImages.swiss;
-  }
+    case "arena":
+    case "arena tournament":
+      return CONFIG.eventImages.arena;
 
-  if(
-    text.includes("daily") ||
-    text.includes("team match") ||
-    text.includes("club match") ||
-    event.type==="Team Match"
-  ){
-    return CONFIG.eventImages.dailyMatch;
-  }
+    case "swiss":
+    case "swiss tournament":
+      return CONFIG.eventImages.swiss;
 
-  return CONFIG.fallbackEventImage;
+    case "daily match":
+    case "daily":
+    case "team match":
+    case "club match":
+      return CONFIG.eventImages.dailyMatch;
+
+    default:
+      return CONFIG.fallbackEventImage;
+  }
 }
 
 function updateGreeting(){
@@ -1187,8 +1193,8 @@ async function loadMatches(){
 
   /*
     Calendar dates come from each match's detailed start_time.
-    The title is scanned for stream, live stream, livestream, or Twitch.
-    A matching title automatically uses live-stream.png.
+    Club matches use type "Team Match", which selects daily-match.png.
+    Only live-stream artwork is detected from title keywords.
   */
   state.events=[
     ...MANUAL_EVENTS,
