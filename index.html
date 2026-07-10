@@ -11,8 +11,6 @@
   --gold:#ffd700;
   --gold2:#d4af37;
   --gold3:#fff2a8;
-  --black:#000;
-  --dark:#050505;
   --panel:rgba(16,16,16,.96);
   --line:rgba(212,175,55,.55);
   --text:#f7f7f7;
@@ -20,35 +18,22 @@
   --success:#74d68b;
   --danger:#e28787;
 }
-
 *{box-sizing:border-box}
-
 html,body{
   margin:0;
   padding:0;
   width:100%;
-  min-height:0;
   overflow-x:hidden;
   background:#000;
   color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
 }
-
-body{
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-}
-
+body{display:flex;justify-content:center;align-items:flex-start}
 button,a,input{font:inherit}
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible{
+button:focus-visible,a:focus-visible,input:focus-visible{
   outline:2px solid var(--gold3);
   outline-offset:2px;
 }
-
 .wrap{
   position:relative;
   width:100%;
@@ -58,16 +43,10 @@ input:focus-visible{
   overflow:hidden;
   border:2px solid var(--gold2);
   border-radius:18px;
-  background:
-    radial-gradient(circle at top,#3a2305 0%,#090704 34%,#050505 66%,#000 100%);
+  background:radial-gradient(circle at top,#3a2305 0%,#090704 34%,#050505 66%,#000 100%);
   box-shadow:0 0 16px rgba(212,175,55,.75);
 }
-
-.wrap>*:not(.crownRain){
-  position:relative;
-  z-index:1;
-}
-
+.wrap>*:not(.crownRain){position:relative;z-index:1}
 .crownRain{
   position:absolute;
   inset:0;
@@ -75,7 +54,6 @@ input:focus-visible{
   overflow:hidden;
   pointer-events:none;
 }
-
 .crown{
   position:absolute;
   top:-60px;
@@ -87,60 +65,29 @@ input:focus-visible{
   box-shadow:0 0 10px var(--gold2);
   animation:fallCrown linear infinite;
 }
-
 @keyframes fallCrown{
-  from{transform:translateY(-70px) rotate(0deg)}
+  from{transform:translateY(-70px) rotate(0)}
   to{transform:translateY(3000px) rotate(360deg)}
 }
-
 h1,h2,h3{
   margin:0;
   color:var(--gold);
   text-align:center;
   text-shadow:0 0 8px rgba(212,175,55,.85);
 }
+h1{margin:4px 0 6px;font-size:16px;line-height:1.2}
+h2{font-size:13px;line-height:1.2}
+h3{font-size:11px;line-height:1.2}
+p{font-size:11px;line-height:1.4}
+small{color:var(--muted);font-size:9px}
 
-h1{
-  margin:4px 0 6px;
-  font-size:16px;
-  line-height:1.2;
-}
-
-
-h2{
-  font-size:13px;
-  line-height:1.2;
-}
-
-h3{
-  font-size:11px;
-  line-height:1.2;
-}
-
-p{
-  font-size:11px;
-  line-height:1.4;
-}
-
-small{
-  color:var(--muted);
-  font-size:9px;
-}
-
-.heroBox,
-.card,
-.skyBanner{
+.heroBox,.card,.skyBanner{
   margin:7px 0;
   border:1px solid var(--line);
   border-radius:14px;
   box-shadow:0 0 8px rgba(212,175,55,.25);
 }
-
-.heroBox{
-  padding:4px;
-  background:#000;
-}
-
+.heroBox{padding:4px;background:#000}
 .heroBox img{
   display:block;
   width:100%;
@@ -148,22 +95,13 @@ small{
   object-fit:contain;
   border-radius:10px;
 }
-
-.card{
-  padding:8px;
-  background:var(--panel);
-}
-
+.card{padding:8px;background:var(--panel)}
 .skyBanner{
   padding:8px;
   text-align:center;
   background:linear-gradient(135deg,#2b1903,#050505);
 }
-
-.skyBanner p{
-  margin:4px 0 0;
-}
-
+.skyBanner p{margin:4px 0 0}
 .marquee{
   margin:7px 0;
   overflow:hidden;
@@ -172,7 +110,6 @@ small{
   border-radius:12px;
   background:#000;
 }
-
 .marquee span{
   display:inline-block;
   padding:6px 8px;
@@ -181,12 +118,10 @@ small{
   font-weight:700;
   animation:scroll 20s linear infinite;
 }
-
 @keyframes scroll{
   from{transform:translateX(100%)}
   to{transform:translateX(-100%)}
 }
-
 .sectionHead{
   display:flex;
   align-items:center;
@@ -194,8 +129,6 @@ small{
   gap:6px;
   margin-bottom:7px;
 }
-
-
 .statusDot{
   width:7px;
   height:7px;
@@ -204,19 +137,10 @@ small{
   background:var(--gold2);
   box-shadow:0 0 8px var(--gold);
 }
+.statusDot.live{background:var(--success);box-shadow:0 0 8px var(--success)}
+.statusDot.error{background:var(--danger);box-shadow:0 0 8px var(--danger)}
 
-.statusDot.live{
-  background:var(--success);
-  box-shadow:0 0 8px var(--success);
-}
-
-.statusDot.error{
-  background:var(--danger);
-  box-shadow:0 0 8px var(--danger);
-}
-
-.btn,
-button{
+.btn,button{
   display:block;
   width:100%;
   margin:5px 0;
@@ -232,15 +156,11 @@ button{
   font-size:10px;
   font-weight:800;
 }
-
-.btn.dark,
-button.secondary{
+.btn.dark,button.secondary{
   color:var(--gold);
   border:1px solid var(--line);
   background:#050505;
 }
-
-
 .collapseButton{
   display:flex;
   align-items:center;
@@ -250,15 +170,8 @@ button.secondary{
   border:1px solid var(--line);
   background:#050505;
 }
-
-.collapseArrow{
-  transition:transform .22s ease;
-}
-
-.collapseButton.open .collapseArrow{
-  transform:rotate(180deg);
-}
-
+.collapseArrow{transition:transform .22s ease}
+.collapseButton.open .collapseArrow{transform:rotate(180deg)}
 .collapseContent{
   max-height:0;
   margin-top:0;
@@ -266,34 +179,23 @@ button.secondary{
   opacity:0;
   transition:max-height .32s ease,opacity .2s ease,margin-top .2s ease;
 }
-
 .collapseContent.open{
   max-height:1300px;
   margin-top:7px;
   opacity:1;
 }
-
-.quickGrid{
+.quickGrid,.statsGrid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:5px;
 }
-
-.quickGrid .btn,
-.quickGrid button{
+.quickGrid .btn,.quickGrid button{
   display:flex;
   align-items:center;
   justify-content:center;
   min-height:38px;
   margin:0;
 }
-
-.statsGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:5px;
-}
-
 .stat{
   min-height:66px;
   padding:9px 6px;
@@ -302,14 +204,12 @@ button.secondary{
   background:#050505;
   text-align:center;
 }
-
 .stat strong{
   display:block;
   color:var(--gold);
   font-size:16px;
   line-height:1.1;
 }
-
 .stat span{
   display:block;
   margin-top:4px;
@@ -318,10 +218,7 @@ button.secondary{
   line-height:1.25;
   font-weight:700;
 }
-
-.member,
-.matchRow,
-.rankRow{
+.member,.matchRow,.rankRow{
   display:flex;
   align-items:center;
   gap:7px;
@@ -332,7 +229,6 @@ button.secondary{
   border-radius:11px;
   background:#050505;
 }
-
 .member img{
   width:34px;
   height:34px;
@@ -341,17 +237,8 @@ button.secondary{
   border-radius:50%;
   object-fit:cover;
 }
-
-.memberMain,
-.matchMain,
-.rankMain{
-  min-width:0;
-  flex:1;
-}
-
-.member a,
-.matchRow a,
-.rankRow a{
+.memberMain,.matchMain,.rankMain{min-width:0;flex:1}
+.member a,.matchRow a,.rankRow a{
   display:block;
   overflow:hidden;
   color:var(--gold);
@@ -361,7 +248,6 @@ button.secondary{
   font-size:10px;
   font-weight:800;
 }
-
 .meta{
   display:block;
   margin-top:2px;
@@ -369,7 +255,6 @@ button.secondary{
   font-size:8px;
   line-height:1.25;
 }
-
 .badge{
   flex:0 0 auto;
   padding:3px 5px;
@@ -379,7 +264,6 @@ button.secondary{
   font-size:8px;
   font-weight:900;
 }
-
 .rankNumber{
   display:grid;
   width:25px;
@@ -392,7 +276,6 @@ button.secondary{
   font-size:9px;
   font-weight:900;
 }
-
 .emptyState{
   margin:5px 0 0;
   padding:8px;
@@ -405,10 +288,6 @@ button.secondary{
 }
 
 /* Calendar */
-.calendarCard{
-  overflow:visible;
-}
-
 .calendarTop{
   display:grid;
   grid-template-columns:34px 1fr 34px;
@@ -416,25 +295,18 @@ button.secondary{
   gap:5px;
   margin-bottom:7px;
 }
-
 .calendarTop button{
   height:31px;
   margin:0;
   padding:0;
   font-size:17px;
 }
-
-#calendarTitle{
-  font-size:12px;
-}
-
-.weekdays,
-.calendarGrid{
+#calendarTitle{font-size:12px}
+.weekdays,.calendarGrid{
   display:grid;
   grid-template-columns:repeat(7,minmax(0,1fr));
   gap:4px;
 }
-
 .weekdays span{
   padding:4px 0;
   color:var(--gold3);
@@ -442,7 +314,6 @@ button.secondary{
   font-size:8px;
   font-weight:900;
 }
-
 .day{
   position:relative;
   min-height:62px;
@@ -451,24 +322,12 @@ button.secondary{
   border-radius:8px;
   background:linear-gradient(180deg,#0b0b0b,#050505);
 }
-
-.day.outside{
-  opacity:.38;
-}
-
+.day.outside{opacity:.38}
 .day.today{
   border-color:var(--gold);
   box-shadow:inset 0 0 10px rgba(255,215,0,.30);
 }
-
-.day.hasEvents{
-  cursor:pointer;
-}
-
-.day.hasEvents:hover{
-  border-color:var(--gold);
-}
-
+.day.hasEvents{cursor:pointer}
 .dayNumber{
   position:absolute;
   top:4px;
@@ -479,7 +338,6 @@ button.secondary{
   font-weight:900;
   text-shadow:0 1px 4px #000;
 }
-
 .eventThumb{
   position:absolute;
   left:3px;
@@ -492,21 +350,18 @@ button.secondary{
   background:linear-gradient(145deg,#3b2507,#111);
   pointer-events:none;
 }
-
 .eventThumb img{
   width:100%;
   height:100%;
   object-fit:cover;
-  opacity:.9;
+  opacity:.92;
 }
-
 .eventThumb::after{
   content:"";
   position:absolute;
   inset:0;
   background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.28));
 }
-
 .eventCount{
   position:absolute;
   right:2px;
@@ -519,14 +374,12 @@ button.secondary{
   font-size:7px;
   font-weight:900;
 }
-
 .calendarLegend{
   margin-top:7px;
   color:var(--muted);
   text-align:center;
   font-size:8px;
 }
-
 .eventDrawer{
   display:none;
   margin-top:8px;
@@ -535,11 +388,7 @@ button.secondary{
   border-radius:11px;
   background:#050505;
 }
-
-.eventDrawer.open{
-  display:block;
-}
-
+.eventDrawer.open{display:block}
 .eventDrawerTitle{
   margin:0 0 6px;
   color:var(--gold);
@@ -547,7 +396,6 @@ button.secondary{
   font-size:10px;
   font-weight:900;
 }
-
 .eventDrawerItem{
   display:grid;
   grid-template-columns:52px 1fr;
@@ -560,7 +408,6 @@ button.secondary{
   background:#0a0a0a;
   text-decoration:none;
 }
-
 .eventDrawerItem img{
   width:52px;
   height:42px;
@@ -568,21 +415,18 @@ button.secondary{
   border:1px solid var(--line);
   border-radius:6px;
 }
-
 .eventDrawerItem strong{
   display:block;
   color:var(--gold);
   font-size:9px;
   line-height:1.25;
 }
-
 .eventDrawerItem span{
   display:block;
   margin-top:2px;
   color:var(--muted);
   font-size:8px;
 }
-
 .eventDrawerClose{
   margin-top:6px;
   color:var(--gold);
@@ -598,7 +442,6 @@ button.secondary{
   background:linear-gradient(180deg,#171717,#050505);
   box-shadow:inset 0 0 18px rgba(212,175,55,.1);
 }
-
 .radioCover{
   display:block;
   width:100%;
@@ -606,7 +449,6 @@ button.secondary{
   border:1px solid rgba(212,175,55,.75);
   border-radius:13px;
 }
-
 .albumTitle{
   text-align:center;
   color:var(--gold);
@@ -614,14 +456,12 @@ button.secondary{
   font-weight:900;
   letter-spacing:1px;
 }
-
 .artistName{
   margin:1px 0 6px;
   text-align:center;
   color:var(--muted);
   font-size:9px;
 }
-
 .nowPlaying{
   margin:6px 0;
   padding:6px;
@@ -630,50 +470,25 @@ button.secondary{
   background:#050505;
   text-align:center;
 }
-
 .musicControls{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:4px;
 }
-
-.musicControls button{
-  margin:4px 0;
-  padding:7px 3px;
-}
-
-.musicRow{
-  display:flex;
-  align-items:center;
-  gap:5px;
-}
-
-.musicRow input{
-  flex:1;
-}
-
-input[type=range]{
-  width:100%;
-  accent-color:var(--gold2);
-}
-
-.timeRow{
-  display:flex;
-  justify-content:space-between;
-  margin-top:2px;
-}
-
+.musicControls button{margin:4px 0;padding:7px 3px}
+.musicRow{display:flex;align-items:center;gap:5px}
+.musicRow input{flex:1}
+input[type=range]{width:100%;accent-color:var(--gold2)}
+.timeRow{display:flex;justify-content:space-between;margin-top:2px}
 .activeMusicMode{
   outline:1px solid var(--gold3);
   box-shadow:0 0 8px var(--gold);
 }
-
 .playlist{
   margin-top:7px;
   padding-top:5px;
   border-top:1px solid rgba(212,175,55,.3);
 }
-
 .playlistItem{
   display:flex;
   align-items:center;
@@ -688,21 +503,17 @@ input[type=range]{
   background:#050505;
   font-size:9px;
 }
-
 .playlistItem.active{
   color:#050505;
   border-color:var(--gold);
   background:var(--gold2);
   font-weight:900;
 }
-
 .playlistItem span:first-child{
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
 }
-
-/* Celebrations */
 canvas{
   position:fixed;
   inset:0;
@@ -711,108 +522,7 @@ canvas{
   pointer-events:none;
   z-index:999;
 }
-
-.celebrateGrid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:5px;
-}
-
-
-/* Universal pop-out hover system */
-.heroBox,
-.card,
-.skyBanner,
-.stat,
-.member,
-.matchRow,
-.rankRow,
-.day,
-.eventDrawerItem,
-.radioShell,
-.radioCover,
-.playlistItem,
-.btn,
-button{
-  transition:
-    transform .18s ease,
-    box-shadow .18s ease,
-    border-color .18s ease,
-    filter .18s ease;
-}
-
-.heroBox:hover,
-.card:hover,
-.skyBanner:hover{
-  transform:translateY(-4px) scale(1.012);
-  border-color:var(--gold);
-  box-shadow:
-    0 9px 20px rgba(0,0,0,.48),
-    0 0 15px rgba(212,175,55,.42);
-  z-index:4;
-}
-
-.stat:hover,
-.member:hover,
-.matchRow:hover,
-.rankRow:hover,
-.eventDrawerItem:hover,
-.radioShell:hover,
-.playlistItem:hover{
-  transform:translateY(-3px) scale(1.025);
-  border-color:var(--gold);
-  box-shadow:
-    0 7px 15px rgba(0,0,0,.48),
-    0 0 12px rgba(212,175,55,.36);
-  z-index:5;
-}
-
-.day.hasEvents:hover{
-  transform:translateY(-4px) scale(1.08);
-  border-color:var(--gold);
-  box-shadow:
-    0 8px 17px rgba(0,0,0,.6),
-    0 0 13px rgba(255,215,0,.48);
-  z-index:10;
-}
-
-.radioCover:hover{
-  transform:translateY(-4px) scale(1.018);
-  border-color:var(--gold);
-  box-shadow:
-    0 9px 18px rgba(0,0,0,.5),
-    0 0 15px rgba(212,175,55,.42);
-}
-
-.btn:hover,
-button:hover{
-  transform:translateY(-3px) scale(1.025);
-  filter:brightness(1.1);
-  box-shadow:
-    0 7px 14px rgba(0,0,0,.42),
-    0 0 12px rgba(255,215,0,.42);
-  z-index:7;
-}
-
-@media (hover:none){
-  .heroBox:hover,
-  .card:hover,
-  .skyBanner:hover,
-  .stat:hover,
-  .member:hover,
-  .matchRow:hover,
-  .rankRow:hover,
-  .day.hasEvents:hover,
-  .eventDrawerItem:hover,
-  .radioShell:hover,
-  .radioCover:hover,
-  .playlistItem:hover,
-  .btn:hover,
-  button:hover{
-    transform:none;
-  }
-}
-
+.celebrateGrid{display:grid;grid-template-columns:1fr;gap:5px}
 .footer{
   margin:8px 0 0;
   padding:7px 5px 1px;
@@ -822,13 +532,8 @@ button:hover{
   font-size:9px;
   line-height:1.4;
 }
-
 @media(max-width:340px){
-  .wrap{
-    max-width:100%;
-    padding:6px;
-    border-radius:15px;
-  }
+  .wrap{max-width:100%;padding:6px;border-radius:15px}
 }
 </style>
 </head>
@@ -855,9 +560,8 @@ button:hover{
   <section class="card">
     <button class="collapseButton" data-collapse="quickLinks" aria-expanded="false">
       <span>Quick Links</span>
-      <span class="collapseArrow" aria-hidden="true">v</span>
+      <span class="collapseArrow">v</span>
     </button>
-
     <div class="collapseContent" id="quickLinks">
       <div class="quickGrid">
         <a class="btn" href="https://www.chess.com/club/and-chess-for-all-official" target="_blank" rel="noopener">ACFA Official</a>
@@ -877,29 +581,14 @@ button:hover{
     </div>
 
     <div class="statsGrid">
-      <div class="stat">
-        <strong id="memberCount">-</strong>
-        <span>Club members</span>
-      </div>
-
-      <div class="stat">
-        <strong id="upcomingCount">-</strong>
-        <span>Upcoming matches</span>
-      </div>
-
-      <div class="stat">
-        <strong id="activeCount">-</strong>
-        <span>Active matches</span>
-      </div>
-
-      <div class="stat">
-        <strong id="eventCount">-</strong>
-        <span>Events this month</span>
-      </div>
+      <div class="stat"><strong id="memberCount">-</strong><span>Club members</span></div>
+      <div class="stat"><strong id="upcomingCount">-</strong><span>Upcoming matches</span></div>
+      <div class="stat"><strong id="activeCount">-</strong><span>Active matches</span></div>
+      <div class="stat"><strong id="eventCount">-</strong><span>Events this month</span></div>
     </div>
   </section>
 
-  <section class="card calendarCard">
+  <section class="card">
     <div class="calendarTop">
       <button id="prevMonth" aria-label="Previous month">&lt;</button>
       <h2 id="calendarTitle">Calendar</h2>
@@ -907,30 +596,18 @@ button:hover{
     </div>
 
     <div class="weekdays" aria-hidden="true">
-      <span>S</span>
-      <span>M</span>
-      <span>T</span>
-      <span>W</span>
-      <span>T</span>
-      <span>F</span>
-      <span>S</span>
+      <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
     </div>
 
     <div class="calendarGrid" id="calendarGrid"></div>
-
-    <div class="calendarLegend">
-      Select a date with events to view every linked event.
-    </div>
-
+    <div class="calendarLegend">Select a date with events to view every linked event.</div>
     <div class="eventDrawer" id="eventDrawer" aria-live="polite"></div>
   </section>
 
   <section class="card">
     <button class="collapseButton open" data-collapse="newestMembers" aria-expanded="true">
-      <span>Newest Members</span>
-      <span class="collapseArrow" aria-hidden="true">v</span>
+      <span>Newest Members</span><span class="collapseArrow">v</span>
     </button>
-
     <div class="collapseContent open" id="newestMembers">
       <div id="memberBoard" class="emptyState">Loading newest members...</div>
     </div>
@@ -938,10 +615,8 @@ button:hover{
 
   <section class="card">
     <button class="collapseButton" data-collapse="matchCenter" aria-expanded="false">
-      <span>Match Center</span>
-      <span class="collapseArrow" aria-hidden="true">v</span>
+      <span>Match Center</span><span class="collapseArrow">v</span>
     </button>
-
     <div class="collapseContent" id="matchCenter">
       <div id="matchBoard" class="emptyState">Loading matches...</div>
     </div>
@@ -949,33 +624,24 @@ button:hover{
 
   <section class="card">
     <button class="collapseButton" data-collapse="leaderboard" aria-expanded="false">
-      <span>Compact Leaderboard</span>
-      <span class="collapseArrow" aria-hidden="true">v</span>
+      <span>Compact Leaderboard</span><span class="collapseArrow">v</span>
     </button>
-
     <div class="collapseContent" id="leaderboard">
-      <div id="leaderboardBoard" class="emptyState">
-        Checking a limited member sample...
-      </div>
+      <div id="leaderboardBoard" class="emptyState">Checking a limited member sample...</div>
     </div>
   </section>
 
   <section class="card">
     <button class="collapseButton open" data-collapse="radioPanel" aria-expanded="true">
-      <span>ACFA Official Radio</span>
-      <span class="collapseArrow" aria-hidden="true">v</span>
+      <span>ACFA Official Radio</span><span class="collapseArrow">v</span>
     </button>
 
     <div class="collapseContent open" id="radioPanel">
-      <p style="margin:7px 0;text-align:center">
-        ACFA Radio presents <b>The Hall</b>.
-      </p>
-
+      <p style="margin:7px 0;text-align:center">ACFA Radio presents <b>The Hall</b>.</p>
       <audio id="clubMusic" preload="metadata"></audio>
 
       <div class="radioShell">
         <img class="radioCover" src="acfa-radio-cover.jpg" alt="ACFA Radio album cover">
-
         <div class="albumTitle">THE HALL</div>
         <div class="artistName">ACFA Radio</div>
 
@@ -985,12 +651,12 @@ button:hover{
         </div>
 
         <div class="musicControls">
-          <button id="prevTrackBtn" aria-label="Previous track">Prev</button>
-          <button id="musicBtn" aria-label="Play or pause">Play</button>
-          <button id="nextTrackBtn" aria-label="Next track">Next</button>
+          <button id="prevTrackBtn">Prev</button>
+          <button id="musicBtn">Play</button>
+          <button id="nextTrackBtn">Next</button>
         </div>
 
-        <input id="progressBar" type="range" min="0" max="100" value="0" step="1" aria-label="Track progress">
+        <input id="progressBar" type="range" min="0" max="100" value="0" step="1">
 
         <div class="timeRow">
           <small id="currentTime">0:00</small>
@@ -998,19 +664,18 @@ button:hover{
         </div>
 
         <div class="musicControls">
-          <button id="shuffleBtn" aria-label="Toggle shuffle">Shuffle</button>
-          <button id="repeatBtn" aria-label="Toggle repeat">Repeat</button>
-          <button id="stopBtn" aria-label="Stop music">Stop</button>
+          <button id="shuffleBtn">Shuffle</button>
+          <button id="repeatBtn">Repeat</button>
+          <button id="stopBtn">Stop</button>
         </div>
 
         <div class="musicRow">
-          <span aria-hidden="true">Low</span>
-          <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.45" aria-label="Volume">
-          <span aria-hidden="true">High</span>
+          <span>Low</span>
+          <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.45">
+          <span>High</span>
         </div>
 
         <small id="musicStatus">Music ready</small>
-
         <button class="secondary" id="playlistToggle">Show Playlist</button>
         <div class="playlist" id="playlist" hidden></div>
       </div>
@@ -1019,8 +684,7 @@ button:hover{
 
   <section class="card">
     <button class="collapseButton" data-collapse="celebrationPanel" aria-expanded="false">
-      <span>Celebrate</span>
-      <span class="collapseArrow" aria-hidden="true">v</span>
+      <span>Celebrate</span><span class="collapseArrow">v</span>
     </button>
 
     <div class="collapseContent" id="celebrationPanel">
@@ -1050,160 +714,179 @@ const CONFIG = {
   memberLimit: 3,
   leaderboardSample: 18,
   defaultAvatar: "https://www.chess.com/bundles/web/images/noavatar_l.84a92436.gif",
-  defaultEventImage: "acfa-event-default.jpg",
-  fallbackEventImage: "acfa-hero.jpeg"
+  fallbackEventImage: "acfa-hero.jpeg",
+  eventImages: {
+    dailyMatch: "assets/calendar/daily-match.png",
+    voteChess: "assets/calendar/vote-chess.png",
+    arena: "assets/calendar/arena.png",
+    swiss: "assets/calendar/swiss.png",
+    liveStream: "assets/calendar/live-stream.png"
+  }
 };
 
-/*
-  Add arenas, Vote Chess, Swiss events, streams, or custom events here.
-
-  Example:
-
-  {
-    id: "acfa-arena-july-18",
-    title: "ACFA Community Arena",
-    date: "2026-07-18",
-    url: "https://www.chess.com/play/arena/YOUR-EVENT-ID",
-    image: "acfa-arena.jpg",
-    type: "Arena"
-  }
-*/
 const MANUAL_EVENTS = [];
 
 const state = {
   members: [],
   matches: [],
   events: [...MANUAL_EVENTS],
-  calendarDate: new Date(
-    new Date().getFullYear(),
-    new Date().getMonth(),
-    1
-  )
+  calendarDate: new Date(new Date().getFullYear(),new Date().getMonth(),1)
 };
 
 const $ = id => document.getElementById(id);
 
-async function fetchJSON(url, timeoutMs = 12000) {
+async function fetchJSON(url,timeoutMs=12000){
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const timer = setTimeout(()=>controller.abort(),timeoutMs);
 
-  try {
-    const response = await fetch(url, {
-      cache: "no-store",
-      headers: {
-        "Accept": "application/json"
-      },
-      signal: controller.signal
+  try{
+    const response = await fetch(url,{
+      cache:"no-store",
+      headers:{"Accept":"application/json"},
+      signal:controller.signal
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
+    if(!response.ok) throw new Error(`HTTP ${response.status}`);
     return await response.json();
-  } finally {
+  }finally{
     clearTimeout(timer);
   }
 }
 
-function escapeHTML(value = "") {
-  return String(value).replace(/[&<>"']/g, character => ({
+function escapeHTML(value=""){
+  return String(value).replace(/[&<>"']/g,char=>({
     "&":"&amp;",
     "<":"&lt;",
     ">":"&gt;",
     '"':"&quot;",
     "'":"&#039;"
-  })[character]);
+  })[char]);
 }
 
-function normalizeUrl(value, fallback = CONFIG.clubUrl) {
-  try {
-    const url = new URL(value, window.location.href);
-
-    if (url.protocol === "http:" || url.protocol === "https:") {
-      return url.href;
-    }
-
-    return fallback;
-  } catch {
+function normalizeUrl(value,fallback=CONFIG.clubUrl){
+  try{
+    const url = new URL(value,window.location.href);
+    return ["http:","https:"].includes(url.protocol) ? url.href : fallback;
+  }catch{
     return fallback;
   }
 }
 
-function formatDateFromUnix(timestamp) {
-  if (!timestamp) {
-    return "Date unavailable";
-  }
+function dateKey(date){
+  return [
+    date.getFullYear(),
+    String(date.getMonth()+1).padStart(2,"0"),
+    String(date.getDate()).padStart(2,"0")
+  ].join("-");
+}
 
-  return new Date(timestamp * 1000).toLocaleDateString(undefined, {
+function unixToDateKey(timestamp){
+  if(!timestamp && timestamp!==0) return "";
+  return dateKey(new Date(timestamp*1000));
+}
+
+function formatDateFromUnix(timestamp){
+  if(!timestamp) return "Date unavailable";
+  return new Date(timestamp*1000).toLocaleDateString(undefined,{
     month:"short",
     day:"numeric",
     year:"numeric"
   });
 }
 
-function unixToDateKey(timestamp) {
-  if (!timestamp) {
-    return "";
+/*
+  Image priority:
+  1. Explicit custom image
+  2. Stream keywords in match/event title
+  3. Vote Chess
+  4. Arena
+  5. Swiss
+  6. Daily/team match
+  7. ACFA hero fallback
+*/
+function getEventImage(event={}){
+  if(event.image) return event.image;
+
+  const text = [
+    event.title,
+    event.name,
+    event.type,
+    event.status
+  ].filter(Boolean).join(" ").toLowerCase();
+
+  if(
+    text.includes("livestream") ||
+    text.includes("live stream") ||
+    text.includes("stream") ||
+    text.includes("twitch")
+  ){
+    return CONFIG.eventImages.liveStream;
   }
 
-  const date = new Date(timestamp * 1000);
+  if(
+    text.includes("vote chess") ||
+    text.includes("vote-chess") ||
+    text.includes("votechess")
+  ){
+    return CONFIG.eventImages.voteChess;
+  }
 
-  return [
-    date.getFullYear(),
-    String(date.getMonth() + 1).padStart(2,"0"),
-    String(date.getDate()).padStart(2,"0")
-  ].join("-");
+  if(text.includes("arena")){
+    return CONFIG.eventImages.arena;
+  }
+
+  if(text.includes("swiss")){
+    return CONFIG.eventImages.swiss;
+  }
+
+  if(
+    text.includes("daily") ||
+    text.includes("team match") ||
+    text.includes("club match") ||
+    event.type==="Team Match"
+  ){
+    return CONFIG.eventImages.dailyMatch;
+  }
+
+  return CONFIG.fallbackEventImage;
 }
 
-function dateKey(date) {
-  return [
-    date.getFullYear(),
-    String(date.getMonth() + 1).padStart(2,"0"),
-    String(date.getDate()).padStart(2,"0")
-  ].join("-");
-}
-
-function updateGreeting() {
+function updateGreeting(){
   const hour = new Date().getHours();
-  const greeting = $("timeGreeting");
-  const message = $("themeMessage");
 
-  if (hour >= 7 && hour < 12) {
-    greeting.textContent = "Good Morning, ACFA";
-    message.textContent = "The board is open and the first move is waiting.";
-  } else if (hour >= 12 && hour < 19) {
-    greeting.textContent = "Good Afternoon, ACFA";
-    message.textContent = "A good time for a game and an even better time to avoid donating the queen.";
-  } else if (hour >= 19 && hour <= 23) {
-    greeting.textContent = "Good Evening, ACFA";
-    message.textContent = "The clocks are ticking and the next match is waiting.";
-  } else {
-    greeting.textContent = "Late Night Chess";
-    message.textContent = "Quiet hours, sharp moves, and entirely reasonable sleep decisions.";
+  if(hour>=7 && hour<12){
+    $("timeGreeting").textContent="Good Morning, ACFA";
+    $("themeMessage").textContent="The board is open and the first move is waiting.";
+  }else if(hour>=12 && hour<19){
+    $("timeGreeting").textContent="Good Afternoon, ACFA";
+    $("themeMessage").textContent="A good time for a game and an even better time to avoid donating the queen.";
+  }else if(hour>=19 && hour<=23){
+    $("timeGreeting").textContent="Good Evening, ACFA";
+    $("themeMessage").textContent="The clocks are ticking and the next match is waiting.";
+  }else{
+    $("timeGreeting").textContent="Late Night Chess";
+    $("themeMessage").textContent="Quiet hours, sharp moves, and entirely reasonable sleep decisions.";
   }
 }
 
-function createCrownRain() {
-  const rain = $("crownRain");
+function createCrownRain(){
+  const rain=$("crownRain");
 
-  for (let index = 0; index < 14; index++) {
-    const crown = document.createElement("div");
-
-    crown.className = "crown";
-    crown.style.left = `${Math.random() * 100}%`;
-    crown.style.animationDuration = `${18 + Math.random() * 15}s`;
-    crown.style.animationDelay = `${Math.random() * 15}s`;
-
+  for(let i=0;i<14;i++){
+    const crown=document.createElement("div");
+    crown.className="crown";
+    crown.style.left=`${Math.random()*100}%`;
+    crown.style.animationDuration=`${18+Math.random()*15}s`;
+    crown.style.animationDelay=`${Math.random()*15}s`;
     rain.appendChild(crown);
   }
 }
 
-function initializeCollapsibles() {
-  document.querySelectorAll("[data-collapse]").forEach(button => {
-    button.addEventListener("click", () => {
-      const target = $(button.dataset.collapse);
-      const open = !target.classList.contains("open");
+function initializeCollapsibles(){
+  document.querySelectorAll("[data-collapse]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      const target=$(button.dataset.collapse);
+      const open=!target.classList.contains("open");
 
       target.classList.toggle("open",open);
       button.classList.toggle("open",open);
@@ -1212,27 +895,25 @@ function initializeCollapsibles() {
   });
 }
 
-async function copyClubLink() {
-  const button = $("copyClubBtn");
+async function copyClubLink(){
+  const button=$("copyClubBtn");
 
-  try {
+  try{
     await navigator.clipboard.writeText(CONFIG.clubUrl);
-    button.textContent = "Link Copied";
-  } catch {
+    button.textContent="Link Copied";
+  }catch{
     window.prompt("Copy the ACFA club link:",CONFIG.clubUrl);
   }
 
-  setTimeout(() => {
-    button.textContent = "Copy Club Link";
-  },1800);
+  setTimeout(()=>button.textContent="Copy Club Link",1800);
 }
 
-function flattenClubMembers(data) {
-  const unique = new Map();
+function flattenClubMembers(data){
+  const unique=new Map();
 
-  ["weekly","monthly","all_time"].forEach(group => {
-    (data[group] || []).forEach(member => {
-      if (member.username) {
+  ["weekly","monthly","all_time"].forEach(group=>{
+    (data[group]||[]).forEach(member=>{
+      if(member.username){
         unique.set(member.username.toLowerCase(),member);
       }
     });
@@ -1241,204 +922,136 @@ function flattenClubMembers(data) {
   return [...unique.values()];
 }
 
-async function loadClubMembers() {
-  const data = await fetchJSON(
-    `${CONFIG.api}/club/${CONFIG.clubSlug}/members`
-  );
-
-  state.members = flattenClubMembers(data);
-
-  $("memberCount").textContent = state.members.length.toLocaleString();
-
-  const newest = [...state.members]
-    .filter(member => Number.isFinite(member.joined))
-    .sort((a,b) => b.joined - a.joined)
-    .slice(0,CONFIG.memberLimit);
-
-  await renderNewestMembers(newest);
-
-  loadCompactLeaderboard(state.members).catch(() => {
-    $("leaderboardBoard").className = "emptyState";
-    $("leaderboardBoard").textContent =
-      "Leaderboard data could not be loaded.";
-  });
-}
-
-async function renderNewestMembers(members) {
-  const board = $("memberBoard");
-
-  if (!members.length) {
-    board.className = "emptyState";
-    board.textContent = "No recent members were returned.";
-    return;
-  }
-
-  board.className = "";
-
-  const cards = await Promise.all(
-    members.map(async (member,index) => {
-      let profile = {};
-      let stats = {};
-
-      try {
-        profile = await fetchJSON(
-          `${CONFIG.api}/player/${encodeURIComponent(member.username)}`
-        );
-      } catch {}
-
-      try {
-        stats = await fetchJSON(
-          `${CONFIG.api}/player/${encodeURIComponent(member.username)}/stats`
-        );
-      } catch {}
-
-      const best = highestRating(stats);
-      const avatar = normalizeUrl(
-        profile.avatar || CONFIG.defaultAvatar,
-        CONFIG.defaultAvatar
-      );
-
-      const username = escapeHTML(member.username);
-
-      const profileUrl = normalizeUrl(
-        profile.url ||
-        `https://www.chess.com/member/${member.username}`
-      );
-
-      const labels = ["Latest","New","Recent"];
-
-      return `
-        <div class="member">
-          <img
-            src="${avatar}"
-            alt="${username}"
-            onerror="this.onerror=null;this.src='${CONFIG.defaultAvatar}'"
-          >
-
-          <div class="memberMain">
-            <a
-              href="${profileUrl}"
-              target="_blank"
-              rel="noopener"
-            >
-              ${username}
-            </a>
-
-            <span class="meta">
-              Joined ${formatDateFromUnix(member.joined)}
-            </span>
-
-            <span class="meta">
-              ${escapeHTML(best.label)}: ${escapeHTML(best.rating)}
-            </span>
-          </div>
-
-          <span class="badge">
-            ${labels[index] || "New"}
-          </span>
-        </div>
-      `;
-    })
-  );
-
-  board.innerHTML = cards.join("");
-}
-
-function highestRating(stats) {
-  const categories = [
+function highestRating(stats){
+  const categories=[
     ["Rapid",stats?.chess_rapid?.last?.rating],
     ["Blitz",stats?.chess_blitz?.last?.rating],
     ["Bullet",stats?.chess_bullet?.last?.rating],
     ["Daily",stats?.chess_daily?.last?.rating],
     ["Chess960",stats?.chess960_daily?.last?.rating]
-  ].filter(([,rating]) => Number.isFinite(rating));
+  ].filter(([,rating])=>Number.isFinite(rating));
 
-  if (!categories.length) {
-    return {
-      label:"Highest rating",
-      rating:"Unrated"
-    };
+  if(!categories.length){
+    return {label:"Highest rating",rating:"Unrated"};
   }
 
-  categories.sort((a,b) => b[1] - a[1]);
-
-  return {
-    label:categories[0][0],
-    rating:categories[0][1]
-  };
+  categories.sort((a,b)=>b[1]-a[1]);
+  return {label:categories[0][0],rating:categories[0][1]};
 }
 
-async function loadCompactLeaderboard(members) {
-  const board = $("leaderboardBoard");
-  const sample = members.slice(0,CONFIG.leaderboardSample);
-  const results = [];
+async function loadClubMembers(){
+  const data=await fetchJSON(`${CONFIG.api}/club/${CONFIG.clubSlug}/members`);
+  state.members=flattenClubMembers(data);
+  $("memberCount").textContent=state.members.length.toLocaleString();
 
-  for (const member of sample) {
-    try {
-      const stats = await fetchJSON(
-        `${CONFIG.api}/player/${encodeURIComponent(member.username)}/stats`
-      );
+  const newest=[...state.members]
+    .filter(member=>Number.isFinite(member.joined))
+    .sort((a,b)=>b.joined-a.joined)
+    .slice(0,CONFIG.memberLimit);
 
-      const best = highestRating(stats);
+  await renderNewestMembers(newest);
+  loadCompactLeaderboard(state.members).catch(()=>{
+    $("leaderboardBoard").className="emptyState";
+    $("leaderboardBoard").textContent="Leaderboard data could not be loaded.";
+  });
+}
 
-      if (Number.isFinite(best.rating)) {
+async function renderNewestMembers(members){
+  const board=$("memberBoard");
+
+  if(!members.length){
+    board.className="emptyState";
+    board.textContent="No recent members were returned.";
+    return;
+  }
+
+  board.className="";
+
+  const cards=await Promise.all(members.map(async(member,index)=>{
+    let profile={};
+    let stats={};
+
+    try{
+      profile=await fetchJSON(`${CONFIG.api}/player/${encodeURIComponent(member.username)}`);
+    }catch{}
+
+    try{
+      stats=await fetchJSON(`${CONFIG.api}/player/${encodeURIComponent(member.username)}/stats`);
+    }catch{}
+
+    const best=highestRating(stats);
+    const username=escapeHTML(member.username);
+    const avatar=normalizeUrl(profile.avatar||CONFIG.defaultAvatar,CONFIG.defaultAvatar);
+    const profileUrl=normalizeUrl(profile.url||`https://www.chess.com/member/${member.username}`);
+    const labels=["Latest","New","Recent"];
+
+    return `
+      <div class="member">
+        <img src="${avatar}" alt="${username}" onerror="this.onerror=null;this.src='${CONFIG.defaultAvatar}'">
+        <div class="memberMain">
+          <a href="${profileUrl}" target="_blank" rel="noopener">${username}</a>
+          <span class="meta">Joined ${formatDateFromUnix(member.joined)}</span>
+          <span class="meta">${escapeHTML(best.label)}: ${escapeHTML(best.rating)}</span>
+        </div>
+        <span class="badge">${labels[index]||"New"}</span>
+      </div>
+    `;
+  }));
+
+  board.innerHTML=cards.join("");
+}
+
+async function loadCompactLeaderboard(members){
+  const board=$("leaderboardBoard");
+  const results=[];
+
+  for(const member of members.slice(0,CONFIG.leaderboardSample)){
+    try{
+      const stats=await fetchJSON(`${CONFIG.api}/player/${encodeURIComponent(member.username)}/stats`);
+      const best=highestRating(stats);
+
+      if(Number.isFinite(best.rating)){
         results.push({
           username:member.username,
           rating:best.rating,
           category:best.label
         });
       }
-    } catch {}
+    }catch{}
   }
 
-  results.sort((a,b) => b.rating - a.rating);
+  results.sort((a,b)=>b.rating-a.rating);
+  const top=results.slice(0,5);
 
-  const top = results.slice(0,5);
-
-  if (!top.length) {
-    board.className = "emptyState";
-    board.textContent =
-      "No rated players were returned in the current sample.";
+  if(!top.length){
+    board.className="emptyState";
+    board.textContent="No rated players were returned in the current sample.";
     return;
   }
 
-  board.className = "";
-
-  board.innerHTML = top.map((player,index) => `
+  board.className="";
+  board.innerHTML=top.map((player,index)=>`
     <div class="rankRow">
-      <span class="rankNumber">
-        ${index + 1}
-      </span>
-
+      <span class="rankNumber">${index+1}</span>
       <div class="rankMain">
-        <a
-          href="https://www.chess.com/member/${encodeURIComponent(player.username)}"
-          target="_blank"
-          rel="noopener"
-        >
+        <a href="https://www.chess.com/member/${encodeURIComponent(player.username)}" target="_blank" rel="noopener">
           ${escapeHTML(player.username)}
         </a>
-
-        <span class="meta">
-          ${escapeHTML(player.category)}
-        </span>
+        <span class="meta">${escapeHTML(player.category)}</span>
       </div>
-
-      <span class="badge">
-        ${player.rating}
-      </span>
+      <span class="badge">${player.rating}</span>
     </div>
   `).join("");
 
-  board.innerHTML += `
+  board.innerHTML+=`
     <div class="calendarLegend">
       Top ratings from a limited live sample, not the complete roster.
     </div>
   `;
 }
 
-function extractMatchId(match) {
-  const candidates = [
+function extractMatchId(match){
+  const candidates=[
     match?.id,
     match?.match_id,
     match?.["@id"],
@@ -1446,397 +1059,273 @@ function extractMatchId(match) {
     match?._apiUrl
   ];
 
-  for (const candidate of candidates) {
-    if (candidate === undefined || candidate === null) {
-      continue;
-    }
+  for(const candidate of candidates){
+    if(candidate===undefined||candidate===null) continue;
 
-    const value = String(candidate).trim();
+    const value=String(candidate).trim();
 
-    if (/^\d+$/.test(value)) {
-      return value;
-    }
+    if(/^\d+$/.test(value)) return value;
 
-    const apiMatch = value.match(/\/pub\/match\/(\d+)/i);
+    const apiMatch=value.match(/\/pub\/match\/(\d+)/i);
+    if(apiMatch) return apiMatch[1];
 
-    if (apiMatch) {
-      return apiMatch[1];
-    }
+    const pageMatch=value.match(/\/club\/matches\/(?:[^/]+\/)?(\d+)/i);
+    if(pageMatch) return pageMatch[1];
 
-    const pageMatch = value.match(/\/club\/matches\/(?:[^/]+\/)?(\d+)/i);
-
-    if (pageMatch) {
-      return pageMatch[1];
-    }
-
-    const finalNumber = value.match(/(\d+)(?:\/)?$/);
-
-    if (finalNumber) {
-      return finalNumber[1];
-    }
+    const finalNumber=value.match(/(\d+)(?:\/)?$/);
+    if(finalNumber) return finalNumber[1];
   }
 
   return "";
 }
 
-function getMatchApiUrl(match) {
-  const jsonLdUrl = String(match?.["@id"] || "").trim();
+function getMatchApiUrl(match){
+  const jsonLdUrl=String(match?.["@id"]||"").trim();
 
-  if (/^https:\/\/api\.chess\.com\/pub\/match\/\d+\/?$/i.test(jsonLdUrl)) {
+  if(/^https:\/\/api\.chess\.com\/pub\/match\/\d+\/?$/i.test(jsonLdUrl)){
     return jsonLdUrl;
   }
 
-  const directApiUrl = String(match?._apiUrl || "").trim();
+  const directApiUrl=String(match?._apiUrl||"").trim();
 
-  if (/^https:\/\/api\.chess\.com\/pub\/match\/\d+\/?$/i.test(directApiUrl)) {
+  if(/^https:\/\/api\.chess\.com\/pub\/match\/\d+\/?$/i.test(directApiUrl)){
     return directApiUrl;
   }
 
-  const matchId = extractMatchId(match);
-
-  return matchId
-    ? `${CONFIG.api}/match/${matchId}`
-    : "";
+  const matchId=extractMatchId(match);
+  return matchId ? `${CONFIG.api}/match/${matchId}` : "";
 }
 
-function isPublicChessMatchUrl(value) {
+function isPublicChessMatchUrl(value){
   return /^https:\/\/(?:www\.)?chess\.com\/club\/matches\/.+/i.test(
-    String(value || "").trim()
+    String(value||"").trim()
   );
 }
 
-function getMatchPageUrl(match) {
-  const candidates = [
+function getMatchPageUrl(match){
+  const candidates=[
     match?._publicUrl,
     match?.url,
     match?.match_url,
     match?.web_url
   ];
 
-  for (const candidate of candidates) {
-    if (isPublicChessMatchUrl(candidate)) {
+  for(const candidate of candidates){
+    if(isPublicChessMatchUrl(candidate)){
       return String(candidate).trim();
     }
   }
 
-  /*
-    The detailed /pub/match/{id} record normally supplies the real public
-    Chess.com match URL. We intentionally do not invent a club-page route here.
-    If Chess.com omits that URL, Match Center keeps a disabled-looking item
-    instead of quietly sending the visitor to the ACFA home page.
-  */
   return "";
 }
 
-async function hydrateMatch(match) {
-  const apiUrl = getMatchApiUrl(match);
+/*
+  Important fix:
+  preserve the normalized Upcoming / Live / Finished value
+  after merging Chess.com's detailed match response.
+*/
+async function hydrateMatch(match){
+  const apiUrl=getMatchApiUrl(match);
+  const normalizedStatus=match.status;
 
-  if (!apiUrl) {
+  if(!apiUrl){
     return {
       ...match,
+      status:normalizedStatus,
       _apiUrl:"",
       _publicUrl:getMatchPageUrl(match)
     };
   }
 
-  try {
-    const details = await fetchJSON(apiUrl);
+  try{
+    const details=await fetchJSON(apiUrl);
 
     return {
       ...match,
       ...details,
+      status:normalizedStatus,
       _apiUrl:apiUrl,
-      _publicUrl:
-        getMatchPageUrl(details) ||
-        getMatchPageUrl(match)
+      _publicUrl:getMatchPageUrl(details)||getMatchPageUrl(match)
     };
-  } catch {
+  }catch{
     return {
       ...match,
+      status:normalizedStatus,
       _apiUrl:apiUrl,
       _publicUrl:getMatchPageUrl(match)
     };
   }
 }
 
-async function hydrateMatchesSerially(matches) {
-  const hydrated = [];
+async function hydrateMatchesSerially(matches){
+  const hydrated=[];
 
-  for (const match of matches) {
+  for(const match of matches){
     hydrated.push(await hydrateMatch(match));
   }
 
   return hydrated;
 }
 
-function normalizeMatchList(data) {
+function normalizeMatchList(data){
   return [
-    ...(data.registered || []).map(match => ({
-      ...match,
-      status:"Upcoming"
-    })),
-
-    ...(data.in_progress || []).map(match => ({
-      ...match,
-      status:"Live"
-    })),
-
-    ...(data.finished || []).map(match => ({
-      ...match,
-      status:"Finished"
-    }))
+    ...(data.registered||[]).map(match=>({...match,status:"Upcoming"})),
+    ...(data.in_progress||[]).map(match=>({...match,status:"Live"})),
+    ...(data.finished||[]).map(match=>({...match,status:"Finished"}))
   ];
 }
 
-async function loadMatches() {
-  const data = await fetchJSON(
-    `${CONFIG.api}/club/${CONFIG.clubSlug}/matches`
-  );
+async function loadMatches(){
+  const data=await fetchJSON(`${CONFIG.api}/club/${CONFIG.clubSlug}/matches`);
+  state.matches=await hydrateMatchesSerially(normalizeMatchList(data));
 
-  const indexedMatches = normalizeMatchList(data);
+  const upcoming=state.matches.filter(match=>match.status==="Upcoming");
+  const active=state.matches.filter(match=>match.status==="Live");
+
+  $("upcomingCount").textContent=upcoming.length;
+  $("activeCount").textContent=active.length;
 
   /*
-    Chess.com's club-match index is not guaranteed to include the final
-    public webpage URL. Resolve each match through its detailed PubAPI record.
-    Requests are deliberately serial to avoid unnecessary 429 responses.
+    Calendar dates come from each match's detailed start_time.
+    The title is scanned for stream, live stream, livestream, or Twitch.
+    A matching title automatically uses live-stream.png.
   */
-  state.matches = await hydrateMatchesSerially(indexedMatches);
-
-  const upcoming = state.matches.filter(
-    match => match.status === "Upcoming"
-  );
-
-  const active = state.matches.filter(
-    match => match.status === "Live"
-  );
-
-  $("upcomingCount").textContent = upcoming.length;
-  $("activeCount").textContent = active.length;
-
-  state.events = [
+  state.events=[
     ...MANUAL_EVENTS,
-
     ...state.matches
-      .filter(match => match.start_time || match.start_time === 0)
-      .map(match => ({
-        id:`match-${extractMatchId(match) || match.name || match.start_time}`,
-        title:match.name || "ACFA Team Match",
+      .filter(match=>match.start_time||match.start_time===0)
+      .map(match=>({
+        id:`match-${extractMatchId(match)||match.name||match.start_time}`,
+        title:match.name||"ACFA Team Match",
         date:unixToDateKey(match.start_time),
         url:getMatchPageUrl(match),
-        image:CONFIG.defaultEventImage,
         type:"Team Match",
         status:match.status
       }))
-      .filter(event => Boolean(event.url))
+      .filter(event=>Boolean(event.url))
   ];
 
   renderMatchCenter();
   renderCalendar();
 }
 
-function renderMatchCenter() {
-  const board = $("matchBoard");
+function renderMatchCenter(){
+  const board=$("matchBoard");
+  const order={Live:0,Upcoming:1,Finished:2};
 
-  const order = {
-    Live:0,
-    Upcoming:1,
-    Finished:2
-  };
-
-  const matches = [...state.matches]
-    .sort((a,b) =>
-      (order[a.status] ?? 9) -
-      (order[b.status] ?? 9)
-    )
+  const matches=[...state.matches]
+    .sort((a,b)=>(order[a.status]??9)-(order[b.status]??9))
     .slice(0,4);
 
-  if (!matches.length) {
-    board.className = "emptyState";
-    board.textContent = "No matches were returned by Chess.com.";
+  if(!matches.length){
+    board.className="emptyState";
+    board.textContent="No matches were returned by Chess.com.";
     return;
   }
 
-  board.className = "";
-
-  board.innerHTML = matches.map(match => {
-    const name = escapeHTML(
-      match.name || "ACFA Team Match"
-    );
-
-    const publicUrl = getMatchPageUrl(match);
-
-    const status = escapeHTML(
-      match.status || "Match"
-    );
-
-    const date = match.start_time
+  board.className="";
+  board.innerHTML=matches.map(match=>{
+    const name=escapeHTML(match.name||"ACFA Team Match");
+    const publicUrl=getMatchPageUrl(match);
+    const status=escapeHTML(match.status||"Match");
+    const date=match.start_time
       ? formatDateFromUnix(match.start_time)
       : "Start date unavailable";
 
-    const titleMarkup = publicUrl
-      ? `
-        <a
-          href="${normalizeUrl(publicUrl)}"
-          target="_blank"
-          rel="noopener"
-        >
-          ${name}
-        </a>
-      `
-      : `
-        <span style="
-          display:block;
-          color:var(--gold);
-          font-size:10px;
-          font-weight:800;
-        ">
-          ${name}
-        </span>
-      `;
-
-    const linkNote = publicUrl
-      ? "Open match"
-      : "Chess.com did not provide a public match link";
+    const titleMarkup=publicUrl
+      ? `<a href="${normalizeUrl(publicUrl)}" target="_blank" rel="noopener">${name}</a>`
+      : `<span style="display:block;color:var(--gold);font-size:10px;font-weight:800">${name}</span>`;
 
     return `
       <div class="matchRow">
         <div class="matchMain">
           ${titleMarkup}
-
-          <span class="meta">
-            ${escapeHTML(date)}
-          </span>
-
-          <span class="meta">
-            ${escapeHTML(linkNote)}
-          </span>
+          <span class="meta">${escapeHTML(date)}</span>
+          <span class="meta">${publicUrl ? "Open match" : "Chess.com did not provide a public match link"}</span>
         </div>
-
-        <span class="badge">
-          ${status}
-        </span>
+        <span class="badge">${status}</span>
       </div>
     `;
   }).join("");
 }
 
-function renderCalendar() {
-  const grid = $("calendarGrid");
-  const viewed = state.calendarDate;
-  const year = viewed.getFullYear();
-  const month = viewed.getMonth();
-  const firstDay = new Date(year,month,1);
-  const daysInMonth = new Date(year,month + 1,0).getDate();
-  const totalUsedCells = firstDay.getDay() + daysInMonth;
-  const cellCount = totalUsedCells <= 35 ? 35 : 42;
-  const start = new Date(
-    year,
-    month,
-    1 - firstDay.getDay()
-  );
+function renderCalendar(){
+  const grid=$("calendarGrid");
+  const viewed=state.calendarDate;
+  const year=viewed.getFullYear();
+  const month=viewed.getMonth();
+  const firstDay=new Date(year,month,1);
+  const daysInMonth=new Date(year,month+1,0).getDate();
+  const totalUsedCells=firstDay.getDay()+daysInMonth;
+  const cellCount=totalUsedCells<=35?35:42;
+  const start=new Date(year,month,1-firstDay.getDay());
+  const todayKey=dateKey(new Date());
 
-  const todayKey = dateKey(new Date());
+  $("calendarTitle").textContent=viewed.toLocaleDateString(undefined,{
+    month:"long",
+    year:"numeric"
+  });
 
-  $("calendarTitle").textContent =
-    viewed.toLocaleDateString(undefined,{
-      month:"long",
-      year:"numeric"
-    });
-
-  grid.innerHTML = "";
+  grid.innerHTML="";
   closeEventDrawer();
 
-  let monthEventCount = 0;
+  let monthEventCount=0;
 
-  for (let cell = 0; cell < cellCount; cell++) {
-    const current = new Date(start);
+  for(let cell=0;cell<cellCount;cell++){
+    const current=new Date(start);
+    current.setDate(start.getDate()+cell);
 
-    current.setDate(
-      start.getDate() + cell
-    );
+    const key=dateKey(current);
+    const events=state.events.filter(event=>event.date===key);
 
-    const key = dateKey(current);
-
-    const events = state.events.filter(
-      event => event.date === key
-    );
-
-    if (current.getMonth() === month) {
-      monthEventCount += events.length;
+    if(current.getMonth()===month){
+      monthEventCount+=events.length;
     }
 
-    const day = document.createElement("div");
+    const day=document.createElement("div");
+    day.className="day";
 
-    day.className = "day";
+    if(current.getMonth()!==month) day.classList.add("outside");
+    if(key===todayKey) day.classList.add("today");
 
-    if (current.getMonth() !== month) {
-      day.classList.add("outside");
-    }
+    day.innerHTML=`<span class="dayNumber">${current.getDate()}</span>`;
 
-    if (key === todayKey) {
-      day.classList.add("today");
-    }
-
-    day.innerHTML = `
-      <span class="dayNumber">
-        ${current.getDate()}
-      </span>
-    `;
-
-    if (events.length) {
+    if(events.length){
       day.classList.add("hasEvents");
-      day.tabIndex = 0;
+      day.tabIndex=0;
       day.setAttribute("role","button");
-
       day.setAttribute(
         "aria-label",
-        `${events.length} event${events.length === 1 ? "" : "s"} on ${current.toLocaleDateString()}`
+        `${events.length} event${events.length===1?"":"s"} on ${current.toLocaleDateString()}`
       );
 
-      const event = events[0];
+      const event=events[0];
+      const thumb=document.createElement("div");
+      thumb.className="eventThumb";
+      thumb.title=event.title||"Open events";
 
-      const thumb = document.createElement("div");
-      thumb.className = "eventThumb";
-      thumb.title = event.title || "Open events";
-
-      const image = document.createElement("img");
-
-      image.src =
-        event.image ||
-        CONFIG.defaultEventImage;
-
-      image.alt =
-        event.title ||
-        "ACFA event";
-
-      image.onerror = () => {
-        image.onerror = null;
-        image.src = CONFIG.fallbackEventImage;
+      const image=document.createElement("img");
+      image.src=getEventImage(event);
+      image.alt=event.title||"ACFA event";
+      image.onerror=()=>{
+        image.onerror=null;
+        image.src=CONFIG.fallbackEventImage;
       };
 
       thumb.appendChild(image);
       day.appendChild(thumb);
 
-      if (events.length > 1) {
-        const count = document.createElement("span");
-
-        count.className = "eventCount";
-        count.textContent = `+${events.length - 1}`;
-
+      if(events.length>1){
+        const count=document.createElement("span");
+        count.className="eventCount";
+        count.textContent=`+${events.length-1}`;
         day.appendChild(count);
       }
 
-      const open = () => {
-        openEventDrawer(current,events);
-      };
-
+      const open=()=>openEventDrawer(current,events);
       day.addEventListener("click",open);
-
-      day.addEventListener("keydown",eventKey => {
-        if (
-          eventKey.key === "Enter" ||
-          eventKey.key === " "
-        ) {
+      day.addEventListener("keydown",eventKey=>{
+        if(eventKey.key==="Enter"||eventKey.key===" "){
           eventKey.preventDefault();
           open();
         }
@@ -1846,28 +1335,22 @@ function renderCalendar() {
     grid.appendChild(day);
   }
 
-  $("eventCount").textContent = monthEventCount;
+  $("eventCount").textContent=monthEventCount;
 }
 
-function openEventDrawer(date,events) {
-  const drawer = $("eventDrawer");
+function openEventDrawer(date,events){
+  const drawer=$("eventDrawer");
+  const heading=date.toLocaleDateString(undefined,{
+    weekday:"long",
+    month:"long",
+    day:"numeric",
+    year:"numeric"
+  });
 
-  const heading = date.toLocaleDateString(
-    undefined,
-    {
-      weekday:"long",
-      month:"long",
-      day:"numeric",
-      year:"numeric"
-    }
-  );
+  drawer.innerHTML=`
+    <div class="eventDrawerTitle">${escapeHTML(heading)}</div>
 
-  drawer.innerHTML = `
-    <div class="eventDrawerTitle">
-      ${escapeHTML(heading)}
-    </div>
-
-    ${events.filter(event => Boolean(event.url)).map(event => `
+    ${events.filter(event=>Boolean(event.url)).map(event=>`
       <a
         class="eventDrawerItem"
         href="${normalizeUrl(event.url)}"
@@ -1875,485 +1358,256 @@ function openEventDrawer(date,events) {
         rel="noopener"
       >
         <img
-          src="${escapeHTML(event.image || CONFIG.defaultEventImage)}"
-          alt="${escapeHTML(event.title || "ACFA event")}"
+          src="${escapeHTML(getEventImage(event))}"
+          alt="${escapeHTML(event.title||"ACFA event")}"
           onerror="this.onerror=null;this.src='${CONFIG.fallbackEventImage}'"
         >
-
         <div>
-          <strong>
-            ${escapeHTML(event.title || "ACFA event")}
-          </strong>
-
-          <span>
-            ${escapeHTML(event.status || event.type || "Event")}
-          </span>
+          <strong>${escapeHTML(event.title||"ACFA event")}</strong>
+          <span>${escapeHTML(event.status||event.type||"Event")}</span>
         </div>
       </a>
     `).join("")}
 
-    <button
-      class="eventDrawerClose"
-      id="eventDrawerClose"
-    >
-      Close Events
-    </button>
+    <button class="eventDrawerClose" id="eventDrawerClose">Close Events</button>
   `;
 
   drawer.classList.add("open");
-
-  $("eventDrawerClose").addEventListener(
-    "click",
-    closeEventDrawer
-  );
-
-  drawer.scrollIntoView({
-    behavior:"smooth",
-    block:"nearest"
-  });
+  $("eventDrawerClose").addEventListener("click",closeEventDrawer);
+  drawer.scrollIntoView({behavior:"smooth",block:"nearest"});
 }
 
-function closeEventDrawer() {
-  const drawer = $("eventDrawer");
-
-  if (!drawer) {
-    return;
-  }
-
+function closeEventDrawer(){
+  const drawer=$("eventDrawer");
+  if(!drawer) return;
   drawer.classList.remove("open");
-  drawer.innerHTML = "";
+  drawer.innerHTML="";
 }
 
-function setDataStatus(success) {
-  const dot = $("liveStatus");
-
+function setDataStatus(success){
+  const dot=$("liveStatus");
   dot.classList.toggle("live",success);
   dot.classList.toggle("error",!success);
-
-  dot.title = success
+  dot.title=success
     ? "Live Chess.com data loaded"
     : "Some live data could not be loaded";
 }
 
-async function initializeLiveData() {
-  const results = await Promise.allSettled([
+async function initializeLiveData(){
+  const results=await Promise.allSettled([
     loadClubMembers(),
     loadMatches()
   ]);
 
-  const successCount = results.filter(
-    result => result.status === "fulfilled"
-  ).length;
+  setDataStatus(results.some(result=>result.status==="fulfilled"));
 
-  setDataStatus(successCount > 0);
-
-  if (results[0].status === "rejected") {
-    $("memberCount").textContent = "-";
-
-    $("memberBoard").className = "emptyState";
-    $("memberBoard").textContent =
-      "Newest members could not be loaded.";
-
-    $("leaderboardBoard").className = "emptyState";
-    $("leaderboardBoard").textContent =
-      "Leaderboard data could not be loaded.";
+  if(results[0].status==="rejected"){
+    $("memberCount").textContent="-";
+    $("memberBoard").className="emptyState";
+    $("memberBoard").textContent="Newest members could not be loaded.";
+    $("leaderboardBoard").className="emptyState";
+    $("leaderboardBoard").textContent="Leaderboard data could not be loaded.";
   }
 
-  if (results[1].status === "rejected") {
-    $("upcomingCount").textContent = "-";
-    $("activeCount").textContent = "-";
-
-    $("matchBoard").className = "emptyState";
-    $("matchBoard").textContent =
-      "Match data could not be loaded.";
-
+  if(results[1].status==="rejected"){
+    $("upcomingCount").textContent="-";
+    $("activeCount").textContent="-";
+    $("matchBoard").className="emptyState";
+    $("matchBoard").textContent="Match data could not be loaded.";
     renderCalendar();
   }
 }
 
 /* Radio */
-const tracks = [
+const tracks=[
   {
     title:"The Forgotten Kingdom",
     src:"onecinematicstudio-the-forgotten-kingdom-_-melancholic-amp-grand-ancient-ruins-music-529059.mp3"
   },
-
   {
     title:"The Last Kingdom",
     src:"megisss-the-last-kingdom-481576.mp3"
   },
-
   {
     title:"Queen's Shadow",
     src:"Queens Shadow.mp3"
   }
 ];
 
-const music = $("clubMusic");
+const music=$("clubMusic");
+let currentTrack=Number(localStorage.getItem("acfaOfficialCurrentTrack"))||0;
+let shuffleMode=localStorage.getItem("acfaOfficialShuffle")==="true";
+let repeatMode=localStorage.getItem("acfaOfficialRepeat")==="true";
 
-let currentTrack =
-  Number(
-    localStorage.getItem(
-      "acfaOfficialCurrentTrack"
-    )
-  ) || 0;
-
-let shuffleMode =
-  localStorage.getItem(
-    "acfaOfficialShuffle"
-  ) === "true";
-
-let repeatMode =
-  localStorage.getItem(
-    "acfaOfficialRepeat"
-  ) === "true";
-
-if (
-  currentTrack < 0 ||
-  currentTrack >= tracks.length
-) {
-  currentTrack = 0;
+if(currentTrack<0||currentTrack>=tracks.length){
+  currentTrack=0;
 }
 
-function formatTime(seconds) {
-  if (!Number.isFinite(seconds)) {
-    return "0:00";
-  }
+function formatTime(seconds){
+  if(!Number.isFinite(seconds)) return "0:00";
 
-  const minutes =
-    Math.floor(seconds / 60);
-
-  const remaining =
-    Math.floor(seconds % 60)
-      .toString()
-      .padStart(2,"0");
-
+  const minutes=Math.floor(seconds/60);
+  const remaining=Math.floor(seconds%60).toString().padStart(2,"0");
   return `${minutes}:${remaining}`;
 }
 
-function renderPlaylist() {
-  $("playlist").innerHTML =
-    tracks.map((track,index) => `
-      <div
-        class="playlistItem${index === currentTrack ? " active" : ""}"
-        data-track="${index}"
-      >
-        <span>
-          ${index + 1}. ${escapeHTML(track.title)}
-        </span>
+function renderPlaylist(){
+  $("playlist").innerHTML=tracks.map((track,index)=>`
+    <div class="playlistItem${index===currentTrack?" active":""}" data-track="${index}">
+      <span>${index+1}. ${escapeHTML(track.title)}</span>
+      <span>${index===currentTrack?"Now":"Play"}</span>
+    </div>
+  `).join("");
 
-        <span>
-          ${index === currentTrack ? "Now" : "Play"}
-        </span>
-      </div>
-    `).join("");
-
-  document.querySelectorAll("[data-track]")
-    .forEach(item => {
-      item.addEventListener("click",() => {
-        const shouldPlay = !music.paused;
-
-        loadTrack(
-          Number(item.dataset.track)
-        );
-
-        if (shouldPlay) {
-          playMusic();
-        }
-      });
+  document.querySelectorAll("[data-track]").forEach(item=>{
+    item.addEventListener("click",()=>{
+      const shouldPlay=!music.paused;
+      loadTrack(Number(item.dataset.track));
+      if(shouldPlay) playMusic();
     });
+  });
 }
 
-function loadTrack(index) {
-  currentTrack = index;
-
-  music.src =
-    tracks[currentTrack].src;
-
-  $("trackTitle").textContent =
-    tracks[currentTrack].title;
-
-  $("musicStatus").textContent =
-    `Selected: ${tracks[currentTrack].title}`;
-
-  $("progressBar").value = 0;
-  $("currentTime").textContent = "0:00";
-  $("durationTime").textContent = "0:00";
-
-  localStorage.setItem(
-    "acfaOfficialCurrentTrack",
-    String(currentTrack)
-  );
-
+function loadTrack(index){
+  currentTrack=index;
+  music.src=tracks[currentTrack].src;
+  $("trackTitle").textContent=tracks[currentTrack].title;
+  $("musicStatus").textContent=`Selected: ${tracks[currentTrack].title}`;
+  $("progressBar").value=0;
+  $("currentTime").textContent="0:00";
+  $("durationTime").textContent="0:00";
+  localStorage.setItem("acfaOfficialCurrentTrack",String(currentTrack));
   renderPlaylist();
 }
 
-async function playMusic() {
-  try {
+async function playMusic(){
+  try{
     await music.play();
-
-    $("musicBtn").textContent = "Pause";
-
-    $("musicStatus").textContent =
-      `Playing: ${tracks[currentTrack].title}`;
-  } catch {
-    $("musicStatus").textContent =
-      "Track could not play. Check the exact repository filename.";
+    $("musicBtn").textContent="Pause";
+    $("musicStatus").textContent=`Playing: ${tracks[currentTrack].title}`;
+  }catch{
+    $("musicStatus").textContent="Track could not play. Check the exact repository filename.";
   }
 }
 
-function toggleMusic() {
-  if (music.paused) {
+function toggleMusic(){
+  if(music.paused){
     playMusic();
-  } else {
+  }else{
     music.pause();
-
-    $("musicBtn").textContent = "Play";
-    $("musicStatus").textContent = "Paused";
+    $("musicBtn").textContent="Play";
+    $("musicStatus").textContent="Paused";
   }
 }
 
-function nextTrack() {
-  let next =
-    (currentTrack + 1) %
-    tracks.length;
+function nextTrack(){
+  let next=(currentTrack+1)%tracks.length;
 
-  if (
-    shuffleMode &&
-    tracks.length > 1
-  ) {
-    do {
-      next =
-        Math.floor(
-          Math.random() * tracks.length
-        );
-    } while (next === currentTrack);
+  if(shuffleMode&&tracks.length>1){
+    do{
+      next=Math.floor(Math.random()*tracks.length);
+    }while(next===currentTrack);
   }
 
-  const shouldPlay = !music.paused;
-
+  const shouldPlay=!music.paused;
   loadTrack(next);
-
-  if (shouldPlay) {
-    playMusic();
-  }
+  if(shouldPlay) playMusic();
 }
 
-function previousTrack() {
-  const shouldPlay = !music.paused;
-
-  loadTrack(
-    (currentTrack - 1 + tracks.length) %
-    tracks.length
-  );
-
-  if (shouldPlay) {
-    playMusic();
-  }
+function previousTrack(){
+  const shouldPlay=!music.paused;
+  loadTrack((currentTrack-1+tracks.length)%tracks.length);
+  if(shouldPlay) playMusic();
 }
 
-function toggleShuffle() {
-  shuffleMode = !shuffleMode;
-
-  localStorage.setItem(
-    "acfaOfficialShuffle",
-    String(shuffleMode)
-  );
-
-  $("shuffleBtn").classList.toggle(
-    "activeMusicMode",
-    shuffleMode
-  );
+function toggleShuffle(){
+  shuffleMode=!shuffleMode;
+  localStorage.setItem("acfaOfficialShuffle",String(shuffleMode));
+  $("shuffleBtn").classList.toggle("activeMusicMode",shuffleMode);
 }
 
-function toggleRepeat() {
-  repeatMode = !repeatMode;
-
-  localStorage.setItem(
-    "acfaOfficialRepeat",
-    String(repeatMode)
-  );
-
-  $("repeatBtn").classList.toggle(
-    "activeMusicMode",
-    repeatMode
-  );
+function toggleRepeat(){
+  repeatMode=!repeatMode;
+  localStorage.setItem("acfaOfficialRepeat",String(repeatMode));
+  $("repeatBtn").classList.toggle("activeMusicMode",repeatMode);
 }
 
-function stopMusic() {
+function stopMusic(){
   music.pause();
-  music.currentTime = 0;
-
-  $("musicBtn").textContent = "Play";
-  $("musicStatus").textContent = "Stopped";
+  music.currentTime=0;
+  $("musicBtn").textContent="Play";
+  $("musicStatus").textContent="Stopped";
 }
 
-function initializeRadio() {
-  const savedVolume =
-    localStorage.getItem(
-      "acfaOfficialMusicVolume"
-    );
+function initializeRadio(){
+  const savedVolume=localStorage.getItem("acfaOfficialMusicVolume");
+  music.volume=savedVolume===null?.45:Number(savedVolume);
+  $("volumeSlider").value=String(music.volume);
 
-  music.volume =
-    savedVolume === null
-      ? .45
-      : Number(savedVolume);
+  $("shuffleBtn").classList.toggle("activeMusicMode",shuffleMode);
+  $("repeatBtn").classList.toggle("activeMusicMode",repeatMode);
 
-  $("volumeSlider").value =
-    String(music.volume);
+  $("musicBtn").addEventListener("click",toggleMusic);
+  $("nextTrackBtn").addEventListener("click",nextTrack);
+  $("prevTrackBtn").addEventListener("click",previousTrack);
+  $("shuffleBtn").addEventListener("click",toggleShuffle);
+  $("repeatBtn").addEventListener("click",toggleRepeat);
+  $("stopBtn").addEventListener("click",stopMusic);
 
-  $("shuffleBtn").classList.toggle(
-    "activeMusicMode",
-    shuffleMode
-  );
-
-  $("repeatBtn").classList.toggle(
-    "activeMusicMode",
-    repeatMode
-  );
-
-  $("musicBtn").addEventListener(
-    "click",
-    toggleMusic
-  );
-
-  $("nextTrackBtn").addEventListener(
-    "click",
-    nextTrack
-  );
-
-  $("prevTrackBtn").addEventListener(
-    "click",
-    previousTrack
-  );
-
-  $("shuffleBtn").addEventListener(
-    "click",
-    toggleShuffle
-  );
-
-  $("repeatBtn").addEventListener(
-    "click",
-    toggleRepeat
-  );
-
-  $("stopBtn").addEventListener(
-    "click",
-    stopMusic
-  );
-
-  $("progressBar").addEventListener(
-    "input",
-    event => {
-      if (music.duration) {
-        music.currentTime =
-          (
-            Number(event.target.value) /
-            100
-          ) *
-          music.duration;
-      }
+  $("progressBar").addEventListener("input",event=>{
+    if(music.duration){
+      music.currentTime=(Number(event.target.value)/100)*music.duration;
     }
-  );
+  });
 
-  $("volumeSlider").addEventListener(
-    "input",
-    event => {
-      music.volume =
-        Number(event.target.value);
+  $("volumeSlider").addEventListener("input",event=>{
+    music.volume=Number(event.target.value);
+    localStorage.setItem("acfaOfficialMusicVolume",String(music.volume));
+  });
 
-      localStorage.setItem(
-        "acfaOfficialMusicVolume",
-        String(music.volume)
-      );
+  $("playlistToggle").addEventListener("click",()=>{
+    const playlist=$("playlist");
+    playlist.hidden=!playlist.hidden;
+    $("playlistToggle").textContent=playlist.hidden?"Show Playlist":"Hide Playlist";
+  });
+
+  music.addEventListener("timeupdate",()=>{
+    if(!music.duration) return;
+    $("progressBar").value=String((music.currentTime/music.duration)*100);
+    $("currentTime").textContent=formatTime(music.currentTime);
+    $("durationTime").textContent=formatTime(music.duration);
+  });
+
+  music.addEventListener("loadedmetadata",()=>{
+    $("durationTime").textContent=formatTime(music.duration);
+  });
+
+  music.addEventListener("ended",()=>{
+    if(repeatMode){
+      music.currentTime=0;
+      playMusic();
+    }else{
+      nextTrack();
+      playMusic();
     }
-  );
-
-  $("playlistToggle").addEventListener(
-    "click",
-    () => {
-      const playlist = $("playlist");
-
-      playlist.hidden =
-        !playlist.hidden;
-
-      $("playlistToggle").textContent =
-        playlist.hidden
-          ? "Show Playlist"
-          : "Hide Playlist";
-    }
-  );
-
-  music.addEventListener(
-    "timeupdate",
-    () => {
-      if (!music.duration) {
-        return;
-      }
-
-      $("progressBar").value =
-        String(
-          (
-            music.currentTime /
-            music.duration
-          ) *
-          100
-        );
-
-      $("currentTime").textContent =
-        formatTime(music.currentTime);
-
-      $("durationTime").textContent =
-        formatTime(music.duration);
-    }
-  );
-
-  music.addEventListener(
-    "loadedmetadata",
-    () => {
-      $("durationTime").textContent =
-        formatTime(music.duration);
-    }
-  );
-
-  music.addEventListener(
-    "ended",
-    () => {
-      if (repeatMode) {
-        music.currentTime = 0;
-        playMusic();
-      } else {
-        nextTrack();
-        playMusic();
-      }
-    }
-  );
+  });
 
   loadTrack(currentTrack);
 }
 
-/* Celebration effects */
-const celebrationCanvas =
-  $("celebrationCanvas");
+/* Celebrations */
+const celebrationCanvas=$("celebrationCanvas");
+const celebrationContext=celebrationCanvas.getContext("2d");
 
-const celebrationContext =
-  celebrationCanvas.getContext("2d");
-
-function resizeCelebrationCanvas() {
-  celebrationCanvas.width =
-    window.innerWidth;
-
-  celebrationCanvas.height =
-    window.innerHeight;
+function resizeCelebrationCanvas(){
+  celebrationCanvas.width=window.innerWidth;
+  celebrationCanvas.height=window.innerHeight;
 }
 
-function runCelebration(
-  particles,
-  type
-) {
-  let frame = 0;
+function runCelebration(particles,type){
+  let frame=0;
 
-  function draw() {
+  function draw(){
     celebrationContext.clearRect(
       0,
       0,
@@ -2361,59 +1615,37 @@ function runCelebration(
       celebrationCanvas.height
     );
 
-    particles.forEach(particle => {
-      particle.x += particle.vx;
-      particle.y += particle.vy;
-      particle.vy += .05;
-      particle.life -= 1;
+    particles.forEach(particle=>{
+      particle.x+=particle.vx;
+      particle.y+=particle.vy;
+      particle.vy+=.05;
+      particle.life-=1;
+      celebrationContext.globalAlpha=Math.max(particle.life/120,0);
 
-      celebrationContext.globalAlpha =
-        Math.max(
-          particle.life / 120,
-          0
-        );
-
-      if (type === "icon") {
-        celebrationContext.font =
-          "22px Arial";
-
-        celebrationContext.fillStyle =
-          "#ffd700";
-
-        celebrationContext.fillText(
-          particle.icon,
-          particle.x,
-          particle.y
-        );
-      } else {
+      if(type==="icon"){
+        celebrationContext.font="22px Arial";
+        celebrationContext.fillStyle="#ffd700";
+        celebrationContext.fillText(particle.icon,particle.x,particle.y);
+      }else{
         celebrationContext.beginPath();
-
         celebrationContext.arc(
           particle.x,
           particle.y,
           particle.radius,
           0,
-          Math.PI * 2
+          Math.PI*2
         );
-
-        celebrationContext.fillStyle =
-          particle.color;
-
+        celebrationContext.fillStyle=particle.color;
         celebrationContext.fill();
       }
     });
 
-    celebrationContext.globalAlpha = 1;
-    frame += 1;
+    celebrationContext.globalAlpha=1;
+    frame+=1;
 
-    if (
-      frame < 145 &&
-      particles.some(
-        particle => particle.life > 0
-      )
-    ) {
+    if(frame<145&&particles.some(particle=>particle.life>0)){
       requestAnimationFrame(draw);
-    } else {
+    }else{
       celebrationContext.clearRect(
         0,
         0,
@@ -2426,228 +1658,98 @@ function runCelebration(
   draw();
 }
 
-function goldenConfetti() {
-  const colors = [
-    "#ffd700",
-    "#d4af37",
-    "#fff2a8",
-    "#ffffff"
-  ];
+function goldenConfetti(){
+  const colors=["#ffd700","#d4af37","#fff2a8","#ffffff"];
 
-  const particles =
-    Array.from(
-      {length:120},
-      () => ({
-        x:
-          Math.random() *
-          celebrationCanvas.width,
+  const particles=Array.from({length:120},()=>({
+    x:Math.random()*celebrationCanvas.width,
+    y:-20,
+    vx:(Math.random()-.5)*5,
+    vy:Math.random()*4+3,
+    radius:Math.random()*4+2,
+    color:colors[Math.floor(Math.random()*colors.length)],
+    life:125
+  }));
 
-        y:-20,
-
-        vx:
-          (Math.random() - .5) * 5,
-
-        vy:
-          Math.random() * 4 + 3,
-
-        radius:
-          Math.random() * 4 + 2,
-
-        color:
-          colors[
-            Math.floor(
-              Math.random() *
-              colors.length
-            )
-          ],
-
-        life:125
-      })
-    );
-
-  runCelebration(
-    particles,
-    "dot"
-  );
+  runCelebration(particles,"dot");
 }
 
-function acfaFireworks() {
-  const colors = [
-    "#ffd700",
-    "#d4af37",
-    "#fff2a8",
-    "#ffffff"
-  ];
+function acfaFireworks(){
+  const colors=["#ffd700","#d4af37","#fff2a8","#ffffff"];
+  const centerX=celebrationCanvas.width/2;
+  const centerY=celebrationCanvas.height/2.3;
 
-  const centerX =
-    celebrationCanvas.width / 2;
+  const particles=Array.from({length:170},()=>{
+    const angle=Math.random()*Math.PI*2;
+    const speed=Math.random()*6+2;
 
-  const centerY =
-    celebrationCanvas.height / 2.3;
+    return {
+      x:centerX,
+      y:centerY,
+      vx:Math.cos(angle)*speed,
+      vy:Math.sin(angle)*speed,
+      radius:Math.random()*4+2,
+      color:colors[Math.floor(Math.random()*colors.length)],
+      life:115
+    };
+  });
 
-  const particles =
-    Array.from(
-      {length:170},
-      () => {
-        const angle =
-          Math.random() *
-          Math.PI *
-          2;
-
-        const speed =
-          Math.random() *
-          6 +
-          2;
-
-        return {
-          x:centerX,
-          y:centerY,
-          vx:
-            Math.cos(angle) *
-            speed,
-          vy:
-            Math.sin(angle) *
-            speed,
-          radius:
-            Math.random() *
-            4 +
-            2,
-          color:
-            colors[
-              Math.floor(
-                Math.random() *
-                colors.length
-              )
-            ],
-          life:115
-        };
-      }
-    );
-
-  runCelebration(
-    particles,
-    "dot"
-  );
+  runCelebration(particles,"dot");
 }
 
-function chessPieceBurst() {
-  const icons = [
-    "K",
-    "Q",
-    "R",
-    "B",
-    "N",
-    "P"
-  ];
+function chessPieceBurst(){
+  const icons=["K","Q","R","B","N","P"];
+  const centerX=celebrationCanvas.width/2;
+  const centerY=celebrationCanvas.height/2.3;
 
-  const centerX =
-    celebrationCanvas.width / 2;
+  const particles=Array.from({length:75},()=>{
+    const angle=Math.random()*Math.PI*2;
+    const speed=Math.random()*5+2;
 
-  const centerY =
-    celebrationCanvas.height / 2.3;
+    return {
+      x:centerX,
+      y:centerY,
+      vx:Math.cos(angle)*speed,
+      vy:Math.sin(angle)*speed,
+      icon:icons[Math.floor(Math.random()*icons.length)],
+      life:115
+    };
+  });
 
-  const particles =
-    Array.from(
-      {length:75},
-      () => {
-        const angle =
-          Math.random() *
-          Math.PI *
-          2;
-
-        const speed =
-          Math.random() *
-          5 +
-          2;
-
-        return {
-          x:centerX,
-          y:centerY,
-          vx:
-            Math.cos(angle) *
-            speed,
-          vy:
-            Math.sin(angle) *
-            speed,
-          icon:
-            icons[
-              Math.floor(
-                Math.random() *
-                icons.length
-              )
-            ],
-          life:115
-        };
-      }
-    );
-
-  runCelebration(
-    particles,
-    "icon"
-  );
+  runCelebration(particles,"icon");
 }
 
-function initializeCelebrations() {
+function initializeCelebrations(){
   resizeCelebrationCanvas();
-
-  window.addEventListener(
-    "resize",
-    resizeCelebrationCanvas
-  );
-
-  $("confettiBtn").addEventListener(
-    "click",
-    goldenConfetti
-  );
-
-  $("chessBurstBtn").addEventListener(
-    "click",
-    chessPieceBurst
-  );
-
-  $("fireworksBtn").addEventListener(
-    "click",
-    acfaFireworks
-  );
+  window.addEventListener("resize",resizeCelebrationCanvas);
+  $("confettiBtn").addEventListener("click",goldenConfetti);
+  $("chessBurstBtn").addEventListener("click",chessPieceBurst);
+  $("fireworksBtn").addEventListener("click",acfaFireworks);
 }
 
-function initializeCalendarControls() {
-  $("prevMonth").addEventListener(
-    "click",
-    () => {
-      state.calendarDate =
-        new Date(
-          state.calendarDate.getFullYear(),
-          state.calendarDate.getMonth() - 1,
-          1
-        );
+function initializeCalendarControls(){
+  $("prevMonth").addEventListener("click",()=>{
+    state.calendarDate=new Date(
+      state.calendarDate.getFullYear(),
+      state.calendarDate.getMonth()-1,
+      1
+    );
+    renderCalendar();
+  });
 
-      renderCalendar();
-    }
-  );
-
-  $("nextMonth").addEventListener(
-    "click",
-    () => {
-      state.calendarDate =
-        new Date(
-          state.calendarDate.getFullYear(),
-          state.calendarDate.getMonth() + 1,
-          1
-        );
-
-      renderCalendar();
-    }
-  );
+  $("nextMonth").addEventListener("click",()=>{
+    state.calendarDate=new Date(
+      state.calendarDate.getFullYear(),
+      state.calendarDate.getMonth()+1,
+      1
+    );
+    renderCalendar();
+  });
 }
 
-function initialize() {
+function initialize(){
   updateGreeting();
-
-  setInterval(
-    updateGreeting,
-    60000
-  );
+  setInterval(updateGreeting,60000);
 
   createCrownRain();
   initializeCollapsibles();
@@ -2656,11 +1758,7 @@ function initialize() {
   initializeCelebrations();
   renderCalendar();
 
-  $("copyClubBtn").addEventListener(
-    "click",
-    copyClubLink
-  );
-
+  $("copyClubBtn").addEventListener("click",copyClubLink);
   initializeLiveData();
 }
 
