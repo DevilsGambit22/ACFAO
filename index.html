@@ -796,14 +796,14 @@ function formatDateFromUnix(timestamp){
 
 /*
   Event-image rules:
-  1. An explicitly assigned custom image always wins.
+  1. An explicitly assigned customImage always wins.
   2. Live Stream is the only category detected from title keywords.
   3. Every other calendar image is selected from the event type.
   4. Unknown event types use the ACFA hero image.
 */
 function getEventImage(event={}){
-  if(event.image){
-    return event.image;
+  if(event.customImage){
+    return event.customImage;
   }
 
   const title = String(
