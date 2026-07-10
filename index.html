@@ -240,10 +240,6 @@ button.secondary{
   background:#050505;
 }
 
-button:hover,
-.btn:hover{
-  filter:brightness(1.08);
-}
 
 .collapseButton{
   display:flex;
@@ -720,6 +716,101 @@ canvas{
   display:grid;
   grid-template-columns:1fr;
   gap:5px;
+}
+
+
+/* Universal pop-out hover system */
+.heroBox,
+.card,
+.skyBanner,
+.stat,
+.member,
+.matchRow,
+.rankRow,
+.day,
+.eventDrawerItem,
+.radioShell,
+.radioCover,
+.playlistItem,
+.btn,
+button{
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    border-color .18s ease,
+    filter .18s ease;
+}
+
+.heroBox:hover,
+.card:hover,
+.skyBanner:hover{
+  transform:translateY(-4px) scale(1.012);
+  border-color:var(--gold);
+  box-shadow:
+    0 9px 20px rgba(0,0,0,.48),
+    0 0 15px rgba(212,175,55,.42);
+  z-index:4;
+}
+
+.stat:hover,
+.member:hover,
+.matchRow:hover,
+.rankRow:hover,
+.eventDrawerItem:hover,
+.radioShell:hover,
+.playlistItem:hover{
+  transform:translateY(-3px) scale(1.025);
+  border-color:var(--gold);
+  box-shadow:
+    0 7px 15px rgba(0,0,0,.48),
+    0 0 12px rgba(212,175,55,.36);
+  z-index:5;
+}
+
+.day.hasEvents:hover{
+  transform:translateY(-4px) scale(1.08);
+  border-color:var(--gold);
+  box-shadow:
+    0 8px 17px rgba(0,0,0,.6),
+    0 0 13px rgba(255,215,0,.48);
+  z-index:10;
+}
+
+.radioCover:hover{
+  transform:translateY(-4px) scale(1.018);
+  border-color:var(--gold);
+  box-shadow:
+    0 9px 18px rgba(0,0,0,.5),
+    0 0 15px rgba(212,175,55,.42);
+}
+
+.btn:hover,
+button:hover{
+  transform:translateY(-3px) scale(1.025);
+  filter:brightness(1.1);
+  box-shadow:
+    0 7px 14px rgba(0,0,0,.42),
+    0 0 12px rgba(255,215,0,.42);
+  z-index:7;
+}
+
+@media (hover:none){
+  .heroBox:hover,
+  .card:hover,
+  .skyBanner:hover,
+  .stat:hover,
+  .member:hover,
+  .matchRow:hover,
+  .rankRow:hover,
+  .day.hasEvents:hover,
+  .eventDrawerItem:hover,
+  .radioShell:hover,
+  .radioCover:hover,
+  .playlistItem:hover,
+  .btn:hover,
+  button:hover{
+    transform:none;
+  }
 }
 
 .footer{
@@ -1346,6 +1437,138 @@ async function loadCompactLeaderboard(members) {
   `;
 }
 
+function extractMatchId(match) {
+  const candidates = [
+    match?.id,
+    match?.match_id,
+    match?.["@id"],
+    match?.url,
+    match?._apiUrl
+  ];
+
+  for (const candidate of candidates) {
+    if (candidate === undefined || candidate === null) {
+      continue;
+    }
+
+    const value = String(candidate).trim();
+
+    if (/^\d+$/.test(value)) {
+      return value;
+    }
+
+    const apiMatch = value.match(/\/pub\/match\/(\d+)/i);
+
+    if (apiMatch) {
+      return apiMatch[1];
+    }
+
+    const pageMatch = value.match(/\/club\/matches\/(?:[^/]+\/)?(\d+)/i);
+
+    if (pageMatch) {
+      return pageMatch[1];
+    }
+
+    const finalNumber = value.match(/(\d+)(?:\/)?$/);
+
+    if (finalNumber) {
+      return finalNumber[1];
+    }
+  }
+
+  return "";
+}
+
+function getMatchApiUrl(match) {
+  const jsonLdUrl = String(match?.["@id"] || "").trim();
+
+  if (/^https:\/\/api\.chess\.com\/pub\/match\/\d+\/?$/i.test(jsonLdUrl)) {
+    return jsonLdUrl;
+  }
+
+  const directApiUrl = String(match?._apiUrl || "").trim();
+
+  if (/^https:\/\/api\.chess\.com\/pub\/match\/\d+\/?$/i.test(directApiUrl)) {
+    return directApiUrl;
+  }
+
+  const matchId = extractMatchId(match);
+
+  return matchId
+    ? `${CONFIG.api}/match/${matchId}`
+    : "";
+}
+
+function isPublicChessMatchUrl(value) {
+  return /^https:\/\/(?:www\.)?chess\.com\/club\/matches\/.+/i.test(
+    String(value || "").trim()
+  );
+}
+
+function getMatchPageUrl(match) {
+  const candidates = [
+    match?._publicUrl,
+    match?.url,
+    match?.match_url,
+    match?.web_url
+  ];
+
+  for (const candidate of candidates) {
+    if (isPublicChessMatchUrl(candidate)) {
+      return String(candidate).trim();
+    }
+  }
+
+  /*
+    The detailed /pub/match/{id} record normally supplies the real public
+    Chess.com match URL. We intentionally do not invent a club-page route here.
+    If Chess.com omits that URL, Match Center keeps a disabled-looking item
+    instead of quietly sending the visitor to the ACFA home page.
+  */
+  return "";
+}
+
+async function hydrateMatch(match) {
+  const apiUrl = getMatchApiUrl(match);
+
+  if (!apiUrl) {
+    return {
+      ...match,
+      _apiUrl:"",
+      _publicUrl:getMatchPageUrl(match)
+    };
+  }
+
+  try {
+    const details = await fetchJSON(apiUrl);
+
+    return {
+      ...match,
+      ...details,
+      _apiUrl:apiUrl,
+      _publicUrl:
+        getMatchPageUrl(details) ||
+        getMatchPageUrl(match)
+    };
+  } catch {
+    return {
+      ...match,
+      _apiUrl:apiUrl,
+      _publicUrl:getMatchPageUrl(match)
+    };
+  }
+}
+
+async function hydrateMatchesSerially(matches) {
+  const hydrated = [];
+
+  for (const match of matches) {
+    hydrated.push(await hydrateMatch(match));
+  }
+
+  return hydrated;
+}
+
 function normalizeMatchList(data) {
   return [
     ...(data.registered || []).map(match => ({
@@ -1370,7 +1593,14 @@ async function loadMatches() {
     `${CONFIG.api}/club/${CONFIG.clubSlug}/matches`
   );
 
-  state.matches = normalizeMatchList(data);
+  const indexedMatches = normalizeMatchList(data);
+
+  /*
+    Chess.com's club-match index is not guaranteed to include the final
+    public webpage URL. Resolve each match through its detailed PubAPI record.
+    Requests are deliberately serial to avoid unnecessary 429 responses.
+  */
+  state.matches = await hydrateMatchesSerially(indexedMatches);
 
   const upcoming = state.matches.filter(
     match => match.status === "Upcoming"
@@ -1389,14 +1619,15 @@ async function loadMatches() {
     ...state.matches
       .filter(match => match.start_time || match.start_time === 0)
       .map(match => ({
-        id:`match-${match.id || match.url}`,
+        id:`match-${extractMatchId(match) || match.name || match.start_time}`,
         title:match.name || "ACFA Team Match",
         date:unixToDateKey(match.start_time),
-        url:match.url || CONFIG.clubUrl,
+        url:getMatchPageUrl(match),
         image:CONFIG.defaultEventImage,
         type:"Team Match",
         status:match.status
       }))
+      .filter(event => Boolean(event.url))
   ];
 
   renderMatchCenter();
@@ -1432,9 +1663,7 @@ function renderMatchCenter() {
       match.name || "ACFA Team Match"
     );
 
-    const url = normalizeUrl(
-      match.url || CONFIG.clubUrl
-    );
+    const publicUrl = getMatchPageUrl(match);
 
     const status = escapeHTML(
       match.status || "Match"
@@ -1444,19 +1673,42 @@ function renderMatchCenter() {
       ? formatDateFromUnix(match.start_time)
       : "Start date unavailable";
 
+    const titleMarkup = publicUrl
+      ? `
+        <a
+          href="${normalizeUrl(publicUrl)}"
+          target="_blank"
+          rel="noopener"
+        >
+          ${name}
+        </a>
+      `
+      : `
+        <span style="
+          display:block;
+          color:var(--gold);
+          font-size:10px;
+          font-weight:800;
+        ">
+          ${name}
+        </span>
+      `;
+
+    const linkNote = publicUrl
+      ? "Open match"
+      : "Chess.com did not provide a public match link";
+
     return `
       <div class="matchRow">
         <div class="matchMain">
-          <a
-            href="${url}"
-            target="_blank"
-            rel="noopener"
-          >
-            ${name}
-          </a>
+          ${titleMarkup}
 
           <span class="meta">
             ${escapeHTML(date)}
+          </span>
+
+          <span class="meta">
+            ${escapeHTML(linkNote)}
           </span>
         </div>
 
@@ -1615,7 +1867,7 @@ function openEventDrawer(date,events) {
       ${escapeHTML(heading)}
     </div>
 
-    ${events.map(event => `
+    ${events.filter(event => Boolean(event.url)).map(event => `
       <a
         class="eventDrawerItem"
         href="${normalizeUrl(event.url)}"
