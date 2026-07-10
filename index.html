@@ -3,65 +3,1307 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#050505">
 <title>And Chess For All Official Sidebar</title>
 
 <style>
-:root{--gold:#ffd700;--gold2:#d4af37;--gold3:#fff2a8;--dark:#050505;--text:#f5f5f5;--muted:#bbbbbb}
+:root{
+  --gold:#ffd700;
+  --gold2:#d4af37;
+  --gold3:#fff2a8;
+  --black:#000;
+  --dark:#050505;
+  --panel:rgba(16,16,16,.96);
+  --line:rgba(212,175,55,.52);
+  --text:#f7f7f7;
+  --muted:#bdbdbd;
+  --success:#7ed28c;
+  --danger:#e98d8d;
+}
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;width:100%;height:auto;min-height:0;background:#000;overflow-x:hidden;overflow-y:visible;color:var(--text);font-family:Arial,sans-serif}
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:0;
+  overflow-x:hidden;
+  color:var(--text);
+  background:#000;
+  font-family:Arial,Helvetica,sans-serif;
+}
 body{display:flex;justify-content:center;align-items:flex-start}
-.wrap{position:relative;width:100%;max-width:310px;margin:0 auto;padding:7px;border:2px solid var(--gold2);border-radius:18px;background:radial-gradient(circle at top,#3a2305 0%,#050505 60%,#000 100%);box-shadow:0 0 14px rgba(212,175,55,.75);overflow:hidden}
-.crownRain{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}.crown{position:absolute;top:-50px;color:var(--gold);text-shadow:0 0 10px var(--gold2);animation:fallCrown linear infinite;opacity:.45}@keyframes fallCrown{from{transform:translateY(-60px) rotate(0deg)}to{transform:translateY(1100px) rotate(360deg)}}
+button,a,input{font:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--gold3);outline-offset:2px}
+
+.wrap{
+  position:relative;
+  width:100%;
+  max-width:310px;
+  margin:0 auto;
+  padding:7px;
+  overflow:hidden;
+  border:2px solid var(--gold2);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at top,#3a2305 0%,#090704 32%,#050505 64%,#000 100%);
+  box-shadow:0 0 14px rgba(212,175,55,.72);
+}
 .wrap>*:not(.crownRain){position:relative;z-index:1}
-h1,h2,h3{color:var(--gold);text-align:center;text-shadow:0 0 8px var(--gold2)}h1{font-size:16px;line-height:1.15;margin:4px 0 6px}h2{font-size:13px;line-height:1.2;margin:0 0 7px}h3{font-size:12px;line-height:1.2;margin:4px 0}
-.heroBox{background:#000;border:1px solid var(--gold2);border-radius:14px;padding:4px;margin:7px 0;box-shadow:0 0 8px rgba(212,175,55,.35);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}.heroBox:hover{transform:translateY(-4px);box-shadow:0 7px 16px rgba(212,175,55,.38);border-color:var(--gold)}.heroBox img{display:block;width:100%;height:auto;max-height:175px;object-fit:contain;border-radius:10px}
-.card{background:rgba(17,17,17,.95);border:1px solid var(--gold2);border-radius:14px;padding:8px;margin:7px 0;box-shadow:0 0 8px rgba(212,175,55,.25);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}.card:hover{transform:translateY(-4px);box-shadow:0 7px 16px rgba(212,175,55,.38);border-color:var(--gold)}
-.marquee{overflow:hidden;white-space:nowrap;background:#000;border:1px solid var(--gold2);border-radius:12px;margin:7px 0}.marquee span{display:inline-block;padding:6px 8px;color:var(--gold);font-size:11px;font-weight:bold;animation:scroll 18s linear infinite}@keyframes scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
-.skyBanner{text-align:center;padding:8px;border:1px solid var(--gold);border-radius:14px;margin:7px 0;background:linear-gradient(135deg,#2b1903,#050505);box-shadow:0 0 9px rgba(212,175,55,.45);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}.skyBanner:hover{transform:translateY(-4px);box-shadow:0 7px 16px rgba(212,175,55,.38);border-color:var(--gold)}.skyBanner p{margin:4px 0 0;line-height:1.35;font-size:11px}
-.quickToggle{width:100%;display:flex;justify-content:space-between;align-items:center;background:#050505;color:var(--gold);border:1px solid var(--gold2);border-radius:10px;padding:8px;margin:0;font-size:12px;font-weight:bold;cursor:pointer}.quickToggle:hover{transform:translateY(-3px);box-shadow:0 6px 14px rgba(255,215,0,.30)}.quickArrow{transition:transform .2s ease}.quickLinksContent{overflow:hidden;max-height:0;opacity:0;transition:max-height .25s ease,opacity .2s ease,margin-top .2s ease;margin-top:0}.quickLinksContent.open{max-height:300px;opacity:1;margin-top:7px}.quickToggle.open .quickArrow{transform:rotate(180deg)}
-.btn{display:block;text-align:center;background:var(--gold2);color:#050505;text-decoration:none;font-weight:bold;font-size:11px;padding:7px 6px;border-radius:10px;margin:5px 0;box-shadow:0 0 8px rgba(255,215,0,.45);transition:transform .18s ease,box-shadow .18s ease}.btn:hover{transform:translateY(-3px);box-shadow:0 6px 14px rgba(255,215,0,.35)}.btn.dark{background:#050505;color:var(--gold);border:1px solid var(--gold2)}
-.member{display:flex;align-items:center;gap:7px;background:#050505;border:1px solid #333;border-radius:12px;padding:6px;margin:6px 0;min-height:44px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}.member:hover{transform:translateY(-4px);box-shadow:0 7px 13px rgba(212,175,55,.33);border-color:var(--gold)}.member img{width:34px;height:34px;border-radius:50%;border:1px solid var(--gold2);object-fit:cover;flex:0 0 auto}.member div{min-width:0;flex:1}.member a{color:var(--gold);text-decoration:none;font-size:11px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ratingLine{display:block;margin-top:2px;color:var(--muted);font-size:9px}.ratingLine b{color:var(--gold3)}.badge{margin-left:auto;background:var(--gold2);color:#050505;font-size:9px;padding:3px 5px;border-radius:8px;font-weight:bold;white-space:nowrap}
-small{color:var(--muted);font-size:10px}button{width:100%;padding:7px 6px;border:none;border-radius:10px;background:var(--gold2);color:#050505;font-size:11px;font-weight:bold;margin:5px 0;cursor:pointer;box-shadow:0 0 8px rgba(255,215,0,.35);transition:transform .18s ease,box-shadow .18s ease}button:hover{transform:translateY(-3px);box-shadow:0 6px 14px rgba(255,215,0,.30)}button.secondary,.copyBtn.copied{background:#050505;color:var(--gold);border:1px solid var(--gold2)}
-.radioShell{background:linear-gradient(180deg,#171717,#050505);border:1px solid var(--gold2);border-radius:14px;padding:8px;box-shadow:inset 0 0 18px rgba(212,175,55,.10),0 0 10px rgba(212,175,55,.22)}.radioCover{width:100%;border-radius:13px;border:1px solid rgba(212,175,55,.75);box-shadow:0 0 14px rgba(212,175,55,.35);display:block;margin:0 auto 8px;transition:transform .2s ease,box-shadow .2s ease}.radioCover:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 8px 18px rgba(212,175,55,.35)}.albumTitle{text-align:center;color:var(--gold);font-weight:900;letter-spacing:1px;font-size:13px;margin:4px 0 1px}.artistName{text-align:center;color:var(--muted);font-size:10px;margin-bottom:6px}.now-playing{text-align:center;background:#050505;border:1px solid rgba(212,175,55,.75);border-radius:10px;padding:6px;margin:6px 0}#trackTitle{font-size:12px;margin:3px 0}.music-controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin:5px 0}.music-controls button{font-size:10px;padding:7px 3px}.music-row{display:flex;align-items:center;gap:6px}.music-row input{flex:1;accent-color:var(--gold2)}#progressBar{width:100%;accent-color:var(--gold2)}.time-row{display:flex;justify-content:space-between;margin-top:2px}.activeMusicMode{outline:1px solid #fff2a8;box-shadow:0 0 9px var(--gold)}.playlist{margin-top:7px;border-top:1px solid rgba(212,175,55,.35);padding-top:6px}.playlistItem{display:flex;align-items:center;justify-content:space-between;gap:5px;padding:5px 6px;margin:4px 0;background:#050505;border:1px solid #333;border-radius:9px;font-size:10px;color:var(--muted);cursor:pointer}.playlistItem.active{color:#050505;background:var(--gold2);border-color:var(--gold);font-weight:bold}.playlistItem span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999}.footer{text-align:center;color:#999;font-size:10px;margin:8px 0 0;padding:7px 5px 1px;line-height:1.35;border-top:1px solid rgba(212,175,55,.3)}p{font-size:11px;line-height:1.4}@media(max-width:340px){.wrap{max-width:100%;border-radius:16px;padding:6px}}
+
+.crownRain{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.crown{
+  position:absolute;
+  top:-55px;
+  color:var(--gold);
+  opacity:.33;
+  text-shadow:0 0 10px var(--gold2);
+  animation:fallCrown linear infinite;
+}
+@keyframes fallCrown{
+  from{transform:translateY(-70px) rotate(0deg)}
+  to{transform:translateY(2900px) rotate(360deg)}
+}
+
+h1,h2,h3{margin:0;color:var(--gold);text-align:center;text-shadow:0 0 8px rgba(212,175,55,.85)}
+h1{margin:4px 0 6px;font-size:16px;line-height:1.18}
+h2{font-size:13px;line-height:1.2}
+h3{font-size:11px;line-height:1.2}
+p{font-size:11px;line-height:1.4}
+small{color:var(--muted);font-size:9px}
+
+.heroBox,.card,.skyBanner{
+  margin:7px 0;
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 0 8px rgba(212,175,55,.25);
+}
+.heroBox{padding:4px;background:#000}
+.heroBox img{
+  display:block;
+  width:100%;
+  max-height:178px;
+  object-fit:contain;
+  border-radius:10px;
+}
+.card{padding:8px;background:var(--panel)}
+.skyBanner{
+  padding:8px;
+  text-align:center;
+  background:linear-gradient(135deg,#2b1903,#050505);
+}
+.skyBanner p{margin:4px 0 0}
+
+.marquee{
+  margin:7px 0;
+  overflow:hidden;
+  white-space:nowrap;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#000;
+}
+.marquee span{
+  display:inline-block;
+  padding:6px 8px;
+  color:var(--gold);
+  font-size:10px;
+  font-weight:700;
+  animation:scroll 20s linear infinite;
+}
+@keyframes scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+
+.sectionHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+  margin-bottom:7px;
+}
+.statusDot{
+  width:7px;
+  height:7px;
+  flex:0 0 auto;
+  border-radius:50%;
+  background:var(--gold2);
+  box-shadow:0 0 8px var(--gold);
+}
+.statusDot.live{background:var(--success);box-shadow:0 0 8px var(--success)}
+.statusDot.error{background:var(--danger);box-shadow:0 0 8px var(--danger)}
+
+.btn,button{
+  display:block;
+  width:100%;
+  margin:5px 0;
+  padding:7px 6px;
+  cursor:pointer;
+  border:0;
+  border-radius:10px;
+  color:#050505;
+  background:var(--gold2);
+  box-shadow:0 0 8px rgba(255,215,0,.32);
+  text-align:center;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+}
+.btn.dark,button.secondary{
+  color:var(--gold);
+  border:1px solid var(--line);
+  background:#050505;
+}
+button:hover,.btn:hover{filter:brightness(1.08)}
+
+.collapseButton{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:0;
+  color:var(--gold);
+  border:1px solid var(--line);
+  background:#050505;
+}
+.collapseArrow{transition:transform .22s ease}
+.collapseButton.open .collapseArrow{transform:rotate(180deg)}
+.collapseContent{
+  max-height:0;
+  margin-top:0;
+  overflow:hidden;
+  opacity:0;
+  transition:max-height .32s ease,opacity .2s ease,margin-top .2s ease;
+}
+.collapseContent.open{max-height:1100px;margin-top:7px;opacity:1}
+
+.quickGrid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.quickGrid .btn,.quickGrid button{margin:0;min-height:38px;display:flex;align-items:center;justify-content:center}
+
+.statsGrid{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.stat{
+  min-height:57px;
+  padding:7px 5px;
+  border:1px solid #333;
+  border-radius:10px;
+  background:#050505;
+  text-align:center;
+}
+.stat strong{display:block;color:var(--gold);font-size:14px}
+.stat span{display:block;margin-top:2px;color:var(--muted);font-size:8px;line-height:1.2}
+
+.member,.matchRow,.rankRow{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin:5px 0;
+  padding:6px;
+  min-height:43px;
+  border:1px solid #333;
+  border-radius:11px;
+  background:#050505;
+}
+.member img{
+  width:34px;
+  height:34px;
+  flex:0 0 auto;
+  border:1px solid var(--gold2);
+  border-radius:50%;
+  object-fit:cover;
+}
+.memberMain,.matchMain,.rankMain{min-width:0;flex:1}
+.member a,.matchRow a,.rankRow a{
+  display:block;
+  overflow:hidden;
+  color:var(--gold);
+  text-decoration:none;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:10px;
+  font-weight:800;
+}
+.meta{display:block;margin-top:2px;color:var(--muted);font-size:8px;line-height:1.25}
+.badge{
+  flex:0 0 auto;
+  padding:3px 5px;
+  border-radius:8px;
+  color:#050505;
+  background:var(--gold2);
+  font-size:8px;
+  font-weight:900;
+}
+.rankNumber{
+  display:grid;
+  width:25px;
+  height:25px;
+  flex:0 0 auto;
+  place-items:center;
+  border:1px solid var(--line);
+  border-radius:50%;
+  color:var(--gold);
+  font-size:9px;
+  font-weight:900;
+}
+.emptyState{
+  margin:5px 0 0;
+  padding:8px;
+  color:var(--muted);
+  border:1px dashed #3a3a3a;
+  border-radius:10px;
+  text-align:center;
+  font-size:9px;
+  line-height:1.35;
+}
+
+/* Calendar */
+.calendarTop{
+  display:grid;
+  grid-template-columns:30px 1fr 30px;
+  align-items:center;
+  gap:5px;
+  margin-bottom:7px;
+}
+.calendarTop button{height:29px;margin:0;padding:0}
+#calendarTitle{font-size:12px}
+.weekdays,.calendarGrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.weekdays span{
+  padding:4px 0;
+  color:var(--gold3);
+  text-align:center;
+  font-size:8px;
+  font-weight:900;
+}
+.day{
+  position:relative;
+  min-height:56px;
+  overflow:hidden;
+  border:1px solid #343434;
+  border-radius:8px;
+  background:linear-gradient(180deg,#0b0b0b,#050505);
+}
+.day.outside{opacity:.38}
+.day.today{border-color:var(--gold);box-shadow:inset 0 0 10px rgba(255,215,0,.30)}
+.dayNumber{
+  position:absolute;
+  top:4px;
+  left:5px;
+  z-index:4;
+  color:#f2f2f2;
+  font-size:9px;
+  font-weight:900;
+  text-shadow:0 1px 4px #000;
+}
+.eventThumb{
+  position:absolute;
+  left:3px;
+  right:3px;
+  bottom:3px;
+  height:34px;
+  display:block;
+  overflow:hidden;
+  border:1px solid rgba(212,175,55,.6);
+  border-radius:6px;
+  background:linear-gradient(145deg,#3b2507,#111);
+}
+.eventThumb img{width:100%;height:100%;object-fit:cover;opacity:.88}
+.eventThumb::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.32));
+}
+.eventCount{
+  position:absolute;
+  right:2px;
+  bottom:2px;
+  z-index:5;
+  padding:2px 4px;
+  border-radius:5px;
+  color:#050505;
+  background:var(--gold);
+  font-size:7px;
+  font-weight:900;
+}
+.calendarLegend{margin-top:7px;color:var(--muted);text-align:center;font-size:8px}
+
+.radioShell{
+  padding:8px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:linear-gradient(180deg,#171717,#050505);
+  box-shadow:inset 0 0 18px rgba(212,175,55,.1);
+}
+.radioCover{
+  display:block;
+  width:100%;
+  margin:0 auto 8px;
+  border:1px solid rgba(212,175,55,.75);
+  border-radius:13px;
+}
+.albumTitle{text-align:center;color:var(--gold);font-size:13px;font-weight:900;letter-spacing:1px}
+.artistName{margin:1px 0 6px;text-align:center;color:var(--muted);font-size:9px}
+.nowPlaying{margin:6px 0;padding:6px;border:1px solid var(--line);border-radius:10px;background:#050505;text-align:center}
+.musicControls{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.musicControls button{margin:4px 0;padding:7px 3px}
+.musicRow{display:flex;align-items:center;gap:5px}
+.musicRow input{flex:1}
+input[type=range]{width:100%;accent-color:var(--gold2)}
+.timeRow{display:flex;justify-content:space-between;margin-top:2px}
+.activeMusicMode{outline:1px solid var(--gold3);box-shadow:0 0 8px var(--gold)}
+.playlist{margin-top:7px;padding-top:5px;border-top:1px solid rgba(212,175,55,.3)}
+.playlistItem{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:4px;
+  margin:4px 0;
+  padding:5px 6px;
+  cursor:pointer;
+  border:1px solid #333;
+  border-radius:8px;
+  color:var(--muted);
+  background:#050505;
+  font-size:9px;
+}
+.playlistItem.active{color:#050505;border-color:var(--gold);background:var(--gold2);font-weight:900}
+.playlistItem span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+canvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:999;
+}
+.celebrateGrid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:5px;
+}
+.footer{
+  margin:8px 0 0;
+  padding:7px 5px 1px;
+  border-top:1px solid rgba(212,175,55,.3);
+  color:#999;
+  text-align:center;
+  font-size:9px;
+  line-height:1.4;
+}
+@media(max-width:340px){
+  .wrap{max-width:100%;padding:6px;border-radius:15px}
+}
 </style>
 </head>
+
 <body>
-<div class="wrap"><div class="crownRain" id="crownRain"></div>
-<h1>♟ And Chess For All Official</h1>
-<div class="heroBox"><img src="acfa-hero.jpeg" alt="And Chess For All Official Hero Image"></div>
-<div class="marquee"><span>Every Player Belongs • Every Move Matters • Casual Chess • Daily Matches • Vote Chess • Events • Join Our Discord • Play Variants</span></div>
-<div class="skyBanner"><h2 id="timeGreeting">Loading greeting...</h2><p id="themeMessage">Preparing the board...</p></div>
-<div class="card"><button class="quickToggle" id="quickToggle" onclick="toggleQuickLinks()"><span>🔗 Quick Links</span><span class="quickArrow">⌄</span></button><div class="quickLinksContent" id="quickLinksContent"><a class="btn" href="https://discord.gg/Atk2GKfgU" target="_blank" rel="noopener">💬 Join Our Discord</a><a class="btn dark" href="https://www.twitch.tv/dasoulking98" target="_blank" rel="noopener">🔴 Watch ACFA on Twitch</a><button class="copyBtn" id="copyClubBtn" onclick="copyClubLink()">📋 Copy ACFA Club Link</button><a class="btn dark" href="https://www.chess.com/variants" target="_blank" rel="noopener">♞ Play Variants</a></div></div>
-<div class="card"><h2>🆕 Newest Members</h2><div id="memberBoard">Loading newest members...</div></div>
-<div class="card"><h2>♚ Titled Player Board</h2><div id="titledBoard">Checking titled players...</div></div>
-<div class="card"><h2>🎵 ACFA Official Radio</h2><p style="text-align:center;margin-top:0;">ACFA Radio presents <b>The Hall</b>.</p><audio id="clubMusic" preload="metadata"></audio><div class="radioShell"><img class="radioCover" src="acfa-radio-cover.jpg" alt="ACFA Radio Album Cover"><div class="albumTitle">THE HALL</div><div class="artistName">ACFA Radio</div><div class="now-playing"><small>Now Playing</small><h3 id="trackTitle">Loading track...</h3></div><div class="music-controls"><button onclick="prevTrack()">⏮</button><button id="musicBtn" onclick="toggleMusic()">▶</button><button onclick="nextTrack()">⏭</button></div><input id="progressBar" type="range" min="0" max="100" value="0" step="1" oninput="seekMusic(this.value)"><div class="time-row"><small id="currentTime">0:00</small><small id="durationTime">0:00</small></div><div class="music-controls"><button id="shuffleBtn" onclick="toggleShuffle()">🔀</button><button id="repeatBtn" onclick="toggleRepeat()">🔁</button><button onclick="stopMusic()">⏹</button></div><div class="music-row"><span>🔈</span><input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.45" oninput="setVolume(this.value)"><span>🔊</span></div><small id="musicStatus">Music ready</small><div class="playlist" id="playlist"></div></div></div>
-<div class="card"><h2>🎉 Celebrate</h2><button onclick="confetti()">Golden Confetti</button><button onclick="chessBurst()">Chess Piece Burst</button><button class="secondary" onclick="fireworks()">ACFA Fireworks</button></div>
-<div class="footer">Created by @DevilsGambit22<br>© 2026 And Chess For All Official</div>
-</div><canvas id="canvas"></canvas>
+<main class="wrap">
+  <div class="crownRain" id="crownRain" aria-hidden="true"></div>
+
+  <h1>â And Chess For All Official</h1>
+
+  <div class="heroBox">
+    <img src="acfa-hero.jpeg" alt="And Chess For All Official">
+  </div>
+
+  <div class="marquee" aria-label="ACFA club features">
+    <span>Every Player Belongs â¢ Every Move Matters â¢ Daily Matches â¢ Vote Chess â¢ Arenas â¢ Community â¢ ACFA Radio</span>
+  </div>
+
+  <section class="skyBanner">
+    <h2 id="timeGreeting">Welcome to ACFA</h2>
+    <p id="themeMessage">Preparing the board...</p>
+  </section>
+
+  <section class="card">
+    <button class="collapseButton" data-collapse="quickLinks" aria-expanded="false">
+      <span>ð Quick Links</span><span class="collapseArrow">â</span>
+    </button>
+    <div class="collapseContent" id="quickLinks">
+      <div class="quickGrid">
+        <a class="btn" href="https://www.chess.com/club/and-chess-for-all-official" target="_blank" rel="noopener">â ACFA Official</a>
+        <a class="btn dark" href="https://discord.gg/Atk2GKfgU" target="_blank" rel="noopener">ð¬ Discord</a>
+        <a class="btn dark" href="https://www.twitch.tv/dasoulking98" target="_blank" rel="noopener">ð£ Twitch</a>
+        <a class="btn" href="https://isaflash35.wixsite.com/and-chess-for-all" target="_blank" rel="noopener">ð Website</a>
+        <a class="btn" href="https://www.chess.com/club/acfa-league" target="_blank" rel="noopener">â ACFA League</a>
+        <button class="secondary" id="copyClubBtn">ð Copy Club Link</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="sectionHead">
+      <h2>ð ACFA Live</h2>
+      <span class="statusDot" id="liveStatus" title="Loading live data"></span>
+    </div>
+    <div class="statsGrid">
+      <div class="stat"><strong id="memberCount">â</strong><span>Club members</span></div>
+      <div class="stat"><strong id="upcomingCount">â</strong><span>Upcoming matches</span></div>
+      <div class="stat"><strong id="activeCount">â</strong><span>Active matches</span></div>
+      <div class="stat"><strong id="eventCount">â</strong><span>Events this month</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="calendarTop">
+      <button id="prevMonth" aria-label="Previous month">â¹</button>
+      <h2 id="calendarTitle">Calendar</h2>
+      <button id="nextMonth" aria-label="Next month">âº</button>
+    </div>
+    <div class="weekdays" aria-hidden="true">
+      <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+    </div>
+    <div class="calendarGrid" id="calendarGrid"></div>
+    <div class="calendarLegend">Full month view â¢ Select an event image to open its Chess.com page.</div>
+  </section>
+
+  <section class="card">
+    <button class="collapseButton open" data-collapse="newestMembers" aria-expanded="true">
+      <span>ð Newest Members</span><span class="collapseArrow">â</span>
+    </button>
+    <div class="collapseContent open" id="newestMembers">
+      <div id="memberBoard" class="emptyState">Loading newest members...</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <button class="collapseButton" data-collapse="matchCenter" aria-expanded="false">
+      <span>â Match Center</span><span class="collapseArrow">â</span>
+    </button>
+    <div class="collapseContent" id="matchCenter">
+      <div id="matchBoard" class="emptyState">Loading matches...</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <button class="collapseButton" data-collapse="leaderboard" aria-expanded="false">
+      <span>ð Compact Leaderboard</span><span class="collapseArrow">â</span>
+    </button>
+    <div class="collapseContent" id="leaderboard">
+      <div id="leaderboardBoard" class="emptyState">Checking a limited member sample...</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <button class="collapseButton open" data-collapse="radioPanel" aria-expanded="true">
+      <span>ðµ ACFA Official Radio</span><span class="collapseArrow">â</span>
+    </button>
+    <div class="collapseContent open" id="radioPanel">
+      <p style="margin:7px 0;text-align:center">ACFA Radio presents <b>The Hall</b>.</p>
+      <audio id="clubMusic" preload="metadata"></audio>
+
+      <div class="radioShell">
+        <img class="radioCover" src="acfa-radio-cover.jpg" alt="ACFA Radio album cover">
+        <div class="albumTitle">THE HALL</div>
+        <div class="artistName">ACFA Radio</div>
+
+        <div class="nowPlaying">
+          <small>Now Playing</small>
+          <h3 id="trackTitle">Loading track...</h3>
+        </div>
+
+        <div class="musicControls">
+          <button id="prevTrackBtn" aria-label="Previous track">â®</button>
+          <button id="musicBtn" aria-label="Play or pause">â¶</button>
+          <button id="nextTrackBtn" aria-label="Next track">â­</button>
+        </div>
+
+        <input id="progressBar" type="range" min="0" max="100" value="0" step="1" aria-label="Track progress">
+
+        <div class="timeRow">
+          <small id="currentTime">0:00</small>
+          <small id="durationTime">0:00</small>
+        </div>
+
+        <div class="musicControls">
+          <button id="shuffleBtn" aria-label="Toggle shuffle">ð</button>
+          <button id="repeatBtn" aria-label="Toggle repeat">ð</button>
+          <button id="stopBtn" aria-label="Stop music">â¹</button>
+        </div>
+
+        <div class="musicRow">
+          <span aria-hidden="true">ð</span>
+          <input id="volumeSlider" type="range" min="0" max="1" step="0.05" value="0.45" aria-label="Volume">
+          <span aria-hidden="true">ð</span>
+        </div>
+
+        <small id="musicStatus">Music ready</small>
+
+        <button class="secondary" id="playlistToggle">Show Playlist</button>
+        <div class="playlist" id="playlist" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <button class="collapseButton" data-collapse="celebrationPanel" aria-expanded="false">
+      <span>ð Celebrate</span><span class="collapseArrow">â</span>
+    </button>
+    <div class="collapseContent" id="celebrationPanel">
+      <div class="celebrateGrid">
+        <button id="confettiBtn">Golden Confetti</button>
+        <button id="chessBurstBtn">Chess Piece Burst</button>
+        <button class="secondary" id="fireworksBtn">ACFA Fireworks</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    Created by @DevilsGambit22<br>
+    Â© 2026 And Chess For All Official
+  </div>
+</main>
+
+<canvas id="celebrationCanvas" aria-hidden="true"></canvas>
+
 <script>
-const CLUB_SLUG="and-chess-for-all-official",API="https://api.chess.com/pub",MEMBER_LIMIT=3,TITLED_LIMIT=50,TITLES=["GM","WGM","IM","WIM","FM","WFM","NM","CM","WCM"],DEFAULT_AVATAR="https://www.chess.com/bundles/web/images/noavatar_l.84a92436.gif";
-const greeting=document.getElementById("timeGreeting"),message=document.getElementById("themeMessage");function updateGreeting(){const h=new Date().getHours();if(h>=7&&h<12){greeting.textContent="☀️ Good Morning, ACFA";message.textContent="The board is open and the first move is waiting."}else if(h>=12&&h<19){greeting.textContent="🌇 Good Afternoon, ACFA";message.textContent="Perfect time for a game, unless someone donates their queen to charity."}else if(h>=19&&h<=23){greeting.textContent="🌙 Good Evening, ACFA";message.textContent="The night is quiet, the clocks are ticking, and the blunders are lurking."}else{greeting.textContent="♟️ Late Night Chess";message.textContent="Quiet hours, sharp moves, questionable life choices."}}updateGreeting();setInterval(updateGreeting,60000);
-function createCrowns(){const r=document.getElementById("crownRain");for(let i=0;i<16;i++){const c=document.createElement("div");c.className="crown";c.textContent="👑";c.style.left=Math.random()*100+"%";c.style.fontSize=Math.random()*10+11+"px";c.style.animationDuration=Math.random()*12+14+"s";c.style.animationDelay=Math.random()*14+"s";r.appendChild(c)}}createCrowns();
-function toggleQuickLinks(){document.getElementById("quickLinksContent").classList.toggle("open");document.getElementById("quickToggle").classList.toggle("open")}
-async function copyClubLink(){const l="https://www.chess.com/club/and-chess-for-all-official",b=document.getElementById("copyClubBtn");try{await navigator.clipboard.writeText(l);b.textContent="✓ Club Link Copied!";b.classList.add("copied")}catch(e){const t=document.createElement("textarea");t.value=l;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();try{document.execCommand("copy");b.textContent="✓ Club Link Copied!";b.classList.add("copied")}catch(x){window.prompt("Copy the ACFA club link:",l)}document.body.removeChild(t)}setTimeout(()=>{b.textContent="📋 Copy ACFA Club Link";b.classList.remove("copied")},2200)}
-async function getJSON(u){const r=await fetch(u,{cache:"no-store"});if(!r.ok)throw new Error("API failed: "+r.status);return await r.json()}
-async function loadClubMembers(){const d=await getJSON(`${API}/club/${CLUB_SLUG}/members`),map=new Map();[...(d.weekly||[]),...(d.monthly||[]),...(d.all_time||[])].forEach(m=>{if(m.username)map.set(m.username.toLowerCase(),m)});const members=Array.from(map.values()),newest=[...members].filter(m=>m.joined).sort((a,b)=>(b.joined||0)-(a.joined||0)).slice(0,MEMBER_LIMIT);renderMembers(newest);loadProfiles(members,newest)}
-function renderMembers(members){const board=document.getElementById("memberBoard");board.innerHTML="";if(!members.length){board.innerHTML="<p>No newest members found yet.</p>";return}members.forEach((m,i)=>{const u=m.username||"Unknown",j=m.joined?new Date(m.joined*1000).toLocaleDateString():"Unknown",badge=i===0?"Latest":i===1?"New":"Recent",item=document.createElement("div");item.className="member";item.setAttribute("data-user",u.toLowerCase());item.innerHTML=`<img src="${DEFAULT_AVATAR}" alt="${u}"><div><b><a href="https://www.chess.com/member/${u}" target="_blank" rel="noopener">${u}</a></b><small>Joined: ${j}</small><span class="ratingLine">Highest rating: <b data-rating="${u.toLowerCase()}">Checking...</b></span></div><span class="badge">${badge}</span>`;board.appendChild(item)})}
-async function loadProfiles(members,newestMembers){const titled=[],newestSet=new Set((newestMembers||[]).map(m=>(m.username||"").toLowerCase()));for(const m of members){if(titled.length>=TITLED_LIMIT&&!newestSet.has((m.username||"").toLowerCase()))continue;const u=m.username;if(!u)continue;try{const p=await getJSON(`${API}/player/${u}`),av=p.avatar||DEFAULT_AVATAR,card=document.querySelector(`.member[data-user="${u.toLowerCase()}"]`);if(card)card.querySelector("img").src=av;if(p.title&&TITLES.includes(p.title))titled.push(p)}catch(e){}if(newestSet.has(u.toLowerCase())){try{const s=await getJSON(`${API}/player/${u}/stats`),r=highestRating(s),el=document.querySelector(`[data-rating="${u.toLowerCase()}"]`);if(el)el.textContent=r}catch(e){const el=document.querySelector(`[data-rating="${u.toLowerCase()}"]`);if(el)el.textContent="Unrated"}}}renderTitled(titled)}
-function highestRating(stats){const cats=["chess_daily","chess_rapid","chess_blitz","chess_bullet","chess960_daily","chess960_rapid","chess960_blitz","chess960_bullet"],rs=[];cats.forEach(c=>{const r=stats?.[c]?.last?.rating;if(typeof r==="number"&&Number.isFinite(r))rs.push(r)});return rs.length?Math.max(...rs):"Unrated"}
-function renderTitled(players){const b=document.getElementById("titledBoard");b.innerHTML="";if(!players.length){b.innerHTML="<p>No titled players found yet.</p>";return}players.forEach(p=>{const av=p.avatar||DEFAULT_AVATAR;b.innerHTML+=`<div class="member"><img src="${av}" alt="${p.username}"><div><b><a href="${p.url}" target="_blank" rel="noopener">${p.username}</a></b><small>${p.name||"Chess.com Player"}</small></div><span class="badge">${p.title}</span></div>`})}
-loadClubMembers().catch(()=>{document.getElementById("memberBoard").innerHTML="<p>Could not load newest members.</p>";document.getElementById("titledBoard").innerHTML="<p>Could not check titled players.</p>"});
-const tracks=[{title:"The Forgotten Kingdom",src:"onecinematicstudio-the-forgotten-kingdom-_-melancholic-amp-grand-ancient-ruins-music-529059.mp3"},{title:"The Last Kingdom",src:"megisss-the-last-kingdom-481576.mp3"},{title:"Queen's Shadow",src:"Queens Shadow.mp3"}];
-const music=document.getElementById("clubMusic"),musicBtn=document.getElementById("musicBtn"),musicStatus=document.getElementById("musicStatus"),volumeSlider=document.getElementById("volumeSlider"),trackTitle=document.getElementById("trackTitle"),progressBar=document.getElementById("progressBar"),currentTimeEl=document.getElementById("currentTime"),durationTimeEl=document.getElementById("durationTime"),shuffleBtn=document.getElementById("shuffleBtn"),repeatBtn=document.getElementById("repeatBtn"),playlistEl=document.getElementById("playlist");let currentTrack=Number(localStorage.getItem("acfaOfficialCurrentTrack"))||0,shuffleMode=localStorage.getItem("acfaOfficialShuffle")==="true",repeatMode=localStorage.getItem("acfaOfficialRepeat")==="true";if(currentTrack<0||currentTrack>=tracks.length)currentTrack=0;
-function renderPlaylist(){playlistEl.innerHTML="";tracks.forEach((t,i)=>{const item=document.createElement("div");item.className="playlistItem"+(i===currentTrack?" active":"");item.onclick=function(){const was=!music.paused;loadTrack(i);if(was){music.play();musicBtn.textContent="⏸"}};item.innerHTML=`<span>${i+1}. ${t.title}</span><span>${i===currentTrack?"●":"▶"}</span>`;playlistEl.appendChild(item)})}
-function loadTrack(i){currentTrack=i;music.src=tracks[currentTrack].src;trackTitle.textContent=tracks[currentTrack].title;musicStatus.textContent="Selected: "+tracks[currentTrack].title;localStorage.setItem("acfaOfficialCurrentTrack",currentTrack);progressBar.value=0;currentTimeEl.textContent="0:00";durationTimeEl.textContent="0:00";renderPlaylist()}
-function toggleMusic(){if(music.paused){music.play().then(()=>{musicBtn.textContent="⏸";musicStatus.textContent="Playing: "+tracks[currentTrack].title}).catch(()=>{musicStatus.textContent="Track not found. Check repository filenames."})}else{music.pause();musicBtn.textContent="▶";musicStatus.textContent="Paused"}}
-function nextTrack(){if(shuffleMode){let n=currentTrack;while(n===currentTrack&&tracks.length>1)n=Math.floor(Math.random()*tracks.length);currentTrack=n}else currentTrack=(currentTrack+1)%tracks.length;const was=!music.paused;loadTrack(currentTrack);if(was){music.play();musicBtn.textContent="⏸"}}
-function prevTrack(){currentTrack=(currentTrack-1+tracks.length)%tracks.length;const was=!music.paused;loadTrack(currentTrack);if(was){music.play();musicBtn.textContent="⏸"}}
-function toggleShuffle(){shuffleMode=!shuffleMode;localStorage.setItem("acfaOfficialShuffle",shuffleMode);shuffleBtn.classList.toggle("activeMusicMode",shuffleMode)}function toggleRepeat(){repeatMode=!repeatMode;localStorage.setItem("acfaOfficialRepeat",repeatMode);repeatBtn.classList.toggle("activeMusicMode",repeatMode)}function stopMusic(){music.pause();music.currentTime=0;musicBtn.textContent="▶";musicStatus.textContent="Stopped";progressBar.value=0;currentTimeEl.textContent="0:00"}function setVolume(v){music.volume=Number(v);localStorage.setItem("acfaOfficialMusicVolume",v)}function formatTime(s){if(isNaN(s))return"0:00";const m=Math.floor(s/60),sec=Math.floor(s%60).toString().padStart(2,"0");return m+":"+sec}function seekMusic(v){if(music.duration)music.currentTime=(v/100)*music.duration}
-music.addEventListener("timeupdate",()=>{if(music.duration){progressBar.value=(music.currentTime/music.duration)*100;currentTimeEl.textContent=formatTime(music.currentTime);durationTimeEl.textContent=formatTime(music.duration)}});music.addEventListener("loadedmetadata",()=>durationTimeEl.textContent=formatTime(music.duration));music.addEventListener("ended",()=>{if(repeatMode){music.currentTime=0;music.play()}else{nextTrack();music.play()}});const savedVolume=localStorage.getItem("acfaOfficialMusicVolume");if(savedVolume!==null){music.volume=Number(savedVolume);volumeSlider.value=savedVolume}else music.volume=.45;shuffleBtn.classList.toggle("activeMusicMode",shuffleMode);repeatBtn.classList.toggle("activeMusicMode",repeatMode);loadTrack(currentTrack);
-const canvas=document.getElementById("canvas"),ctx=canvas.getContext("2d");function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}resize();window.addEventListener("resize",resize);function confetti(){let p=[];for(let i=0;i<120;i++)p.push({x:Math.random()*canvas.width,y:-20,vx:(Math.random()-.5)*5,vy:Math.random()*4+3,r:Math.random()*4+2,life:120});animate(p,"dot")}function fireworks(){let p=[];for(let i=0;i<160;i++){let a=Math.random()*Math.PI*2,s=Math.random()*6+2;p.push({x:canvas.width/2,y:canvas.height/2,vx:Math.cos(a)*s,vy:Math.sin(a)*s,r:Math.random()*4+2,life:110})}animate(p,"dot")}function chessBurst(){let icons=["♔","♕","♖","♗","♘","♙"],p=[];for(let i=0;i<70;i++){let a=Math.random()*Math.PI*2,s=Math.random()*5+2;p.push({x:canvas.width/2,y:canvas.height/2,vx:Math.cos(a)*s,vy:Math.sin(a)*s,icon:icons[Math.floor(Math.random()*icons.length)],life:110})}animate(p,"icon")}function animate(pieces,type){let frame=0;function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.05;p.life--;ctx.globalAlpha=Math.max(p.life/110,0);if(type==="icon"){ctx.font="22px Arial";ctx.fillStyle="#ffd700";ctx.fillText(p.icon,p.x,p.y)}else{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=["#ffd700","#d4af37","#fff","#ffcc00"][Math.floor(Math.random()*4)];ctx.fill()}});ctx.globalAlpha=1;frame++;if(frame<140)requestAnimationFrame(draw);else ctx.clearRect(0,0,canvas.width,canvas.height)}draw()}
+"use strict";
+
+const CONFIG = {
+  api: "https://api.chess.com/pub",
+  clubSlug: "and-chess-for-all-official",
+  clubUrl: "https://www.chess.com/club/and-chess-for-all-official",
+  memberLimit: 3,
+  leaderboardSample: 18,
+  defaultAvatar: "https://www.chess.com/bundles/web/images/noavatar_l.84a92436.gif",
+  defaultEventImage: "acfa-hero.jpeg"
+};
+
+/*
+  Add arenas, Vote Chess, streams, Swiss events, or other items here.
+  Dates use YYYY-MM-DD. Each image is clickable.
+*/
+const MANUAL_EVENTS = [
+  /*
+  {
+    id: "example-event",
+    title: "ACFA Community Arena",
+    date: "2026-07-18",
+    url: "https://www.chess.com/play/arena/example",
+    image: "event-arena.jpg",
+    type: "arena"
+  }
+  */
+];
+
+const state = {
+  members: [],
+  matches: [],
+  events: [...MANUAL_EVENTS],
+  calendarDate: new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+};
+
+const $ = id => document.getElementById(id);
+
+async function fetchJSON(url, timeoutMs = 12000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const response = await fetch(url, {
+      cache: "no-store",
+      headers: { "Accept": "application/json" },
+      signal: controller.signal
+    });
+
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return await response.json();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function escapeHTML(value = "") {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  })[character]);
+}
+
+function normalizeUrl(value, fallback = CONFIG.clubUrl) {
+  try {
+    const url = new URL(value, window.location.href);
+    return ["http:", "https:"].includes(url.protocol) ? url.href : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function formatDateFromUnix(timestamp) {
+  if (!timestamp) return "Date unavailable";
+  return new Date(timestamp * 1000).toLocaleDateString(undefined, {
+    month: "short",
+    day: "numeric",
+    year: "numeric"
+  });
+}
+
+function unixToDateKey(timestamp) {
+  if (!timestamp) return "";
+  const date = new Date(timestamp * 1000);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function updateGreeting() {
+  const hour = new Date().getHours();
+  const greeting = $("timeGreeting");
+  const message = $("themeMessage");
+
+  if (hour >= 7 && hour < 12) {
+    greeting.textContent = "âï¸ Good Morning, ACFA";
+    message.textContent = "The board is open and the first move is waiting.";
+  } else if (hour >= 12 && hour < 19) {
+    greeting.textContent = "ð Good Afternoon, ACFA";
+    message.textContent = "A good time for a game and an even better time to avoid donating the queen.";
+  } else if (hour >= 19 && hour <= 23) {
+    greeting.textContent = "ð Good Evening, ACFA";
+    message.textContent = "The clocks are ticking and the next match is waiting.";
+  } else {
+    greeting.textContent = "â Late Night Chess";
+    message.textContent = "Quiet hours, sharp moves, and entirely reasonable sleep decisions.";
+  }
+}
+
+function createCrownRain() {
+  const rain = $("crownRain");
+  for (let index = 0; index < 14; index++) {
+    const crown = document.createElement("div");
+    crown.className = "crown";
+    crown.textContent = "ð";
+    crown.style.left = `${Math.random() * 100}%`;
+    crown.style.fontSize = `${11 + Math.random() * 9}px`;
+    crown.style.animationDuration = `${18 + Math.random() * 15}s`;
+    crown.style.animationDelay = `${Math.random() * 15}s`;
+    rain.appendChild(crown);
+  }
+}
+
+function initializeCollapsibles() {
+  document.querySelectorAll("[data-collapse]").forEach(button => {
+    button.addEventListener("click", () => {
+      const target = $(button.dataset.collapse);
+      const open = !target.classList.contains("open");
+      target.classList.toggle("open", open);
+      button.classList.toggle("open", open);
+      button.setAttribute("aria-expanded", String(open));
+    });
+  });
+}
+
+async function copyClubLink() {
+  const button = $("copyClubBtn");
+  try {
+    await navigator.clipboard.writeText(CONFIG.clubUrl);
+    button.textContent = "â Link Copied";
+  } catch {
+    window.prompt("Copy the ACFA club link:", CONFIG.clubUrl);
+  }
+  setTimeout(() => button.textContent = "ð Copy Club Link", 1800);
+}
+
+function flattenClubMembers(data) {
+  const unique = new Map();
+  ["weekly", "monthly", "all_time"].forEach(group => {
+    (data[group] || []).forEach(member => {
+      if (member.username) unique.set(member.username.toLowerCase(), member);
+    });
+  });
+  return [...unique.values()];
+}
+
+async function loadClubMembers() {
+  const data = await fetchJSON(`${CONFIG.api}/club/${CONFIG.clubSlug}/members`);
+  state.members = flattenClubMembers(data);
+  $("memberCount").textContent = state.members.length.toLocaleString();
+
+  const newest = [...state.members]
+    .filter(member => Number.isFinite(member.joined))
+    .sort((a, b) => b.joined - a.joined)
+    .slice(0, CONFIG.memberLimit);
+
+  await renderNewestMembers(newest);
+  loadCompactLeaderboard(state.members).catch(() => {
+    $("leaderboardBoard").className = "emptyState";
+    $("leaderboardBoard").textContent = "Leaderboard data could not be loaded.";
+  });
+}
+
+async function renderNewestMembers(members) {
+  const board = $("memberBoard");
+  if (!members.length) {
+    board.className = "emptyState";
+    board.textContent = "No recent members were returned.";
+    return;
+  }
+
+  board.className = "";
+  const cards = await Promise.all(members.map(async (member, index) => {
+    let profile = {};
+    let stats = {};
+
+    try { profile = await fetchJSON(`${CONFIG.api}/player/${encodeURIComponent(member.username)}`); } catch {}
+    try { stats = await fetchJSON(`${CONFIG.api}/player/${encodeURIComponent(member.username)}/stats`); } catch {}
+
+    const best = highestRating(stats);
+    const avatar = normalizeUrl(profile.avatar || CONFIG.defaultAvatar, CONFIG.defaultAvatar);
+    const username = escapeHTML(member.username);
+    const profileUrl = normalizeUrl(profile.url || `https://www.chess.com/member/${member.username}`);
+    const labels = ["Latest", "New", "Recent"];
+
+    return `
+      <div class="member">
+        <img src="${avatar}" alt="${username}" onerror="this.src='${CONFIG.defaultAvatar}'">
+        <div class="memberMain">
+          <a href="${profileUrl}" target="_blank" rel="noopener">${username}</a>
+          <span class="meta">Joined ${formatDateFromUnix(member.joined)}</span>
+          <span class="meta">${escapeHTML(best.label)}: ${escapeHTML(best.rating)}</span>
+        </div>
+        <span class="badge">${labels[index] || "New"}</span>
+      </div>`;
+  }));
+
+  board.innerHTML = cards.join("");
+}
+
+function highestRating(stats) {
+  const categories = [
+    ["Rapid", stats?.chess_rapid?.last?.rating],
+    ["Blitz", stats?.chess_blitz?.last?.rating],
+    ["Bullet", stats?.chess_bullet?.last?.rating],
+    ["Daily", stats?.chess_daily?.last?.rating],
+    ["Chess960", stats?.chess960_daily?.last?.rating]
+  ].filter(([, rating]) => Number.isFinite(rating));
+
+  if (!categories.length) return { label: "Highest rating", rating: "Unrated" };
+  categories.sort((a, b) => b[1] - a[1]);
+  return { label: categories[0][0], rating: categories[0][1] };
+}
+
+async function loadCompactLeaderboard(members) {
+  const board = $("leaderboardBoard");
+  const sample = members.slice(0, CONFIG.leaderboardSample);
+  const results = [];
+
+  for (const member of sample) {
+    try {
+      const stats = await fetchJSON(`${CONFIG.api}/player/${encodeURIComponent(member.username)}/stats`);
+      const best = highestRating(stats);
+      if (Number.isFinite(best.rating)) {
+        results.push({
+          username: member.username,
+          rating: best.rating,
+          category: best.label
+        });
+      }
+    } catch {}
+  }
+
+  results.sort((a, b) => b.rating - a.rating);
+  const top = results.slice(0, 5);
+
+  if (!top.length) {
+    board.className = "emptyState";
+    board.textContent = "No rated players were returned in the current sample.";
+    return;
+  }
+
+  board.className = "";
+  board.innerHTML = top.map((player, index) => `
+    <div class="rankRow">
+      <span class="rankNumber">${index + 1}</span>
+      <div class="rankMain">
+        <a href="https://www.chess.com/member/${encodeURIComponent(player.username)}" target="_blank" rel="noopener">${escapeHTML(player.username)}</a>
+        <span class="meta">${escapeHTML(player.category)}</span>
+      </div>
+      <span class="badge">${player.rating}</span>
+    </div>
+  `).join("") + `<div class="calendarLegend">Top ratings from a limited live sample, not the complete roster.</div>`;
+}
+
+function normalizeMatchList(data) {
+  return [
+    ...(data.registered || []).map(match => ({...match, status: "Upcoming"})),
+    ...(data.in_progress || []).map(match => ({...match, status: "Live"})),
+    ...(data.finished || []).map(match => ({...match, status: "Finished"}))
+  ];
+}
+
+async function loadMatches() {
+  const data = await fetchJSON(`${CONFIG.api}/club/${CONFIG.clubSlug}/matches`);
+  state.matches = normalizeMatchList(data);
+
+  const upcoming = state.matches.filter(match => match.status === "Upcoming");
+  const active = state.matches.filter(match => match.status === "Live");
+
+  $("upcomingCount").textContent = upcoming.length;
+  $("activeCount").textContent = active.length;
+
+  state.events = [
+    ...MANUAL_EVENTS,
+    ...state.matches
+      .filter(match => match.start_time || match.start_time === 0)
+      .map(match => ({
+        id: `match-${match.id || match.url}`,
+        title: match.name || "ACFA Team Match",
+        date: unixToDateKey(match.start_time),
+        url: match.url || CONFIG.clubUrl,
+        image: CONFIG.defaultEventImage,
+        type: "team-match",
+        status: match.status
+      }))
+  ];
+
+  renderMatchCenter();
+  renderCalendar();
+}
+
+function renderMatchCenter() {
+  const board = $("matchBoard");
+  const order = { Live: 0, Upcoming: 1, Finished: 2 };
+  const matches = [...state.matches]
+    .sort((a, b) => (order[a.status] ?? 9) - (order[b.status] ?? 9))
+    .slice(0, 4);
+
+  if (!matches.length) {
+    board.className = "emptyState";
+    board.textContent = "No matches were returned by Chess.com.";
+    return;
+  }
+
+  board.className = "";
+  board.innerHTML = matches.map(match => {
+    const name = escapeHTML(match.name || "ACFA Team Match");
+    const url = normalizeUrl(match.url || CONFIG.clubUrl);
+    const status = escapeHTML(match.status || "Match");
+    const date = match.start_time ? formatDateFromUnix(match.start_time) : "Start date unavailable";
+
+    return `
+      <div class="matchRow">
+        <div class="matchMain">
+          <a href="${url}" target="_blank" rel="noopener">${name}</a>
+          <span class="meta">${escapeHTML(date)}</span>
+        </div>
+        <span class="badge">${status}</span>
+      </div>`;
+  }).join("");
+}
+
+function dateKey(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function renderCalendar() {
+  const grid = $("calendarGrid");
+  const viewed = state.calendarDate;
+  const year = viewed.getFullYear();
+  const month = viewed.getMonth();
+  const firstDay = new Date(year, month, 1);
+  const start = new Date(year, month, 1 - firstDay.getDay());
+  const todayKey = dateKey(new Date());
+
+  $("calendarTitle").textContent = viewed.toLocaleDateString(undefined, {
+    month: "long",
+    year: "numeric"
+  });
+
+  grid.innerHTML = "";
+  let monthEventCount = 0;
+
+  for (let cell = 0; cell < 42; cell++) {
+    const current = new Date(start);
+    current.setDate(start.getDate() + cell);
+    const key = dateKey(current);
+    const events = state.events.filter(event => event.date === key);
+    if (current.getMonth() === month) monthEventCount += events.length;
+
+    const day = document.createElement("div");
+    day.className = "day";
+    if (current.getMonth() !== month) day.classList.add("outside");
+    if (key === todayKey) day.classList.add("today");
+
+    day.innerHTML = `<span class="dayNumber">${current.getDate()}</span>`;
+
+    if (events.length) {
+      const event = events[0];
+      const link = document.createElement("a");
+      link.className = "eventThumb";
+      link.href = normalizeUrl(event.url);
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.title = event.title || "Open event";
+      link.setAttribute("aria-label", event.title || "Open event");
+
+      const image = document.createElement("img");
+      image.src = event.image || CONFIG.defaultEventImage;
+      image.alt = event.title || "ACFA event";
+      image.onerror = () => image.remove();
+
+      link.appendChild(image);
+      day.appendChild(link);
+
+      if (events.length > 1) {
+        const count = document.createElement("span");
+        count.className = "eventCount";
+        count.textContent = `+${events.length - 1}`;
+        count.title = events.slice(1).map(item => item.title).join(", ");
+        day.appendChild(count);
+      }
+    }
+
+    grid.appendChild(day);
+  }
+
+  $("eventCount").textContent = monthEventCount;
+}
+
+function setDataStatus(success) {
+  const dot = $("liveStatus");
+  dot.classList.toggle("live", success);
+  dot.classList.toggle("error", !success);
+  dot.title = success ? "Live Chess.com data loaded" : "Some live data could not be loaded";
+}
+
+async function initializeLiveData() {
+  const results = await Promise.allSettled([loadClubMembers(), loadMatches()]);
+  const successCount = results.filter(result => result.status === "fulfilled").length;
+  setDataStatus(successCount > 0);
+
+  if (results[0].status === "rejected") {
+    $("memberCount").textContent = "â";
+    $("memberBoard").className = "emptyState";
+    $("memberBoard").textContent = "Newest members could not be loaded.";
+    $("leaderboardBoard").className = "emptyState";
+    $("leaderboardBoard").textContent = "Leaderboard data could not be loaded.";
+  }
+
+  if (results[1].status === "rejected") {
+    $("upcomingCount").textContent = "â";
+    $("activeCount").textContent = "â";
+    $("matchBoard").className = "emptyState";
+    $("matchBoard").textContent = "Match data could not be loaded.";
+    renderCalendar();
+  }
+}
+
+/* Radio */
+const tracks = [
+  {
+    title: "The Forgotten Kingdom",
+    src: "onecinematicstudio-the-forgotten-kingdom-_-melancholic-amp-grand-ancient-ruins-music-529059.mp3"
+  },
+  {
+    title: "The Last Kingdom",
+    src: "megisss-the-last-kingdom-481576.mp3"
+  },
+  {
+    title: "Queen's Shadow",
+    src: "Queens Shadow.mp3"
+  }
+];
+
+const music = $("clubMusic");
+let currentTrack = Number(localStorage.getItem("acfaOfficialCurrentTrack")) || 0;
+let shuffleMode = localStorage.getItem("acfaOfficialShuffle") === "true";
+let repeatMode = localStorage.getItem("acfaOfficialRepeat") === "true";
+
+if (currentTrack < 0 || currentTrack >= tracks.length) currentTrack = 0;
+
+function formatTime(seconds) {
+  if (!Number.isFinite(seconds)) return "0:00";
+  const minutes = Math.floor(seconds / 60);
+  const remaining = Math.floor(seconds % 60).toString().padStart(2, "0");
+  return `${minutes}:${remaining}`;
+}
+
+function renderPlaylist() {
+  $("playlist").innerHTML = tracks.map((track, index) => `
+    <div class="playlistItem${index === currentTrack ? " active" : ""}" data-track="${index}">
+      <span>${index + 1}. ${escapeHTML(track.title)}</span>
+      <span>${index === currentTrack ? "â" : "â¶"}</span>
+    </div>
+  `).join("");
+
+  document.querySelectorAll("[data-track]").forEach(item => {
+    item.addEventListener("click", () => {
+      const shouldPlay = !music.paused;
+      loadTrack(Number(item.dataset.track));
+      if (shouldPlay) playMusic();
+    });
+  });
+}
+
+function loadTrack(index) {
+  currentTrack = index;
+  music.src = tracks[currentTrack].src;
+  $("trackTitle").textContent = tracks[currentTrack].title;
+  $("musicStatus").textContent = `Selected: ${tracks[currentTrack].title}`;
+  $("progressBar").value = 0;
+  $("currentTime").textContent = "0:00";
+  $("durationTime").textContent = "0:00";
+  localStorage.setItem("acfaOfficialCurrentTrack", String(currentTrack));
+  renderPlaylist();
+}
+
+async function playMusic() {
+  try {
+    await music.play();
+    $("musicBtn").textContent = "â¸";
+    $("musicStatus").textContent = `Playing: ${tracks[currentTrack].title}`;
+  } catch {
+    $("musicStatus").textContent = "Track could not play. Check the exact repository filename.";
+  }
+}
+
+function toggleMusic() {
+  if (music.paused) playMusic();
+  else {
+    music.pause();
+    $("musicBtn").textContent = "â¶";
+    $("musicStatus").textContent = "Paused";
+  }
+}
+
+function nextTrack() {
+  let next = (currentTrack + 1) % tracks.length;
+  if (shuffleMode && tracks.length > 1) {
+    do { next = Math.floor(Math.random() * tracks.length); }
+    while (next === currentTrack);
+  }
+  const shouldPlay = !music.paused;
+  loadTrack(next);
+  if (shouldPlay) playMusic();
+}
+
+function previousTrack() {
+  const shouldPlay = !music.paused;
+  loadTrack((currentTrack - 1 + tracks.length) % tracks.length);
+  if (shouldPlay) playMusic();
+}
+
+function toggleShuffle() {
+  shuffleMode = !shuffleMode;
+  localStorage.setItem("acfaOfficialShuffle", String(shuffleMode));
+  $("shuffleBtn").classList.toggle("activeMusicMode", shuffleMode);
+}
+
+function toggleRepeat() {
+  repeatMode = !repeatMode;
+  localStorage.setItem("acfaOfficialRepeat", String(repeatMode));
+  $("repeatBtn").classList.toggle("activeMusicMode", repeatMode);
+}
+
+function stopMusic() {
+  music.pause();
+  music.currentTime = 0;
+  $("musicBtn").textContent = "â¶";
+  $("musicStatus").textContent = "Stopped";
+}
+
+function initializeRadio() {
+  const savedVolume = localStorage.getItem("acfaOfficialMusicVolume");
+  music.volume = savedVolume === null ? .45 : Number(savedVolume);
+  $("volumeSlider").value = String(music.volume);
+  $("shuffleBtn").classList.toggle("activeMusicMode", shuffleMode);
+  $("repeatBtn").classList.toggle("activeMusicMode", repeatMode);
+
+  $("musicBtn").addEventListener("click", toggleMusic);
+  $("nextTrackBtn").addEventListener("click", nextTrack);
+  $("prevTrackBtn").addEventListener("click", previousTrack);
+  $("shuffleBtn").addEventListener("click", toggleShuffle);
+  $("repeatBtn").addEventListener("click", toggleRepeat);
+  $("stopBtn").addEventListener("click", stopMusic);
+
+  $("progressBar").addEventListener("input", event => {
+    if (music.duration) music.currentTime = (Number(event.target.value) / 100) * music.duration;
+  });
+
+  $("volumeSlider").addEventListener("input", event => {
+    music.volume = Number(event.target.value);
+    localStorage.setItem("acfaOfficialMusicVolume", String(music.volume));
+  });
+
+  $("playlistToggle").addEventListener("click", () => {
+    const playlist = $("playlist");
+    playlist.hidden = !playlist.hidden;
+    $("playlistToggle").textContent = playlist.hidden ? "Show Playlist" : "Hide Playlist";
+  });
+
+  music.addEventListener("timeupdate", () => {
+    if (!music.duration) return;
+    $("progressBar").value = String((music.currentTime / music.duration) * 100);
+    $("currentTime").textContent = formatTime(music.currentTime);
+    $("durationTime").textContent = formatTime(music.duration);
+  });
+
+  music.addEventListener("loadedmetadata", () => {
+    $("durationTime").textContent = formatTime(music.duration);
+  });
+
+  music.addEventListener("ended", () => {
+    if (repeatMode) {
+      music.currentTime = 0;
+      playMusic();
+    } else {
+      nextTrack();
+      playMusic();
+    }
+  });
+
+  loadTrack(currentTrack);
+}
+
+function initializeCalendarControls() {
+  $("prevMonth").addEventListener("click", () => {
+    state.calendarDate = new Date(
+      state.calendarDate.getFullYear(),
+      state.calendarDate.getMonth() - 1,
+      1
+    );
+    renderCalendar();
+  });
+
+  $("nextMonth").addEventListener("click", () => {
+    state.calendarDate = new Date(
+      state.calendarDate.getFullYear(),
+      state.calendarDate.getMonth() + 1,
+      1
+    );
+    renderCalendar();
+  });
+}
+
+
+/* Celebration effects */
+const celebrationCanvas = $("celebrationCanvas");
+const celebrationCtx = celebrationCanvas.getContext("2d");
+
+function resizeCelebrationCanvas() {
+  celebrationCanvas.width = window.innerWidth;
+  celebrationCanvas.height = window.innerHeight;
+}
+
+function runCelebration(particles, type) {
+  let frame = 0;
+
+  function draw() {
+    celebrationCtx.clearRect(0, 0, celebrationCanvas.width, celebrationCanvas.height);
+
+    particles.forEach(particle => {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      particle.vy += 0.05;
+      particle.life -= 1;
+
+      celebrationCtx.globalAlpha = Math.max(particle.life / 120, 0);
+
+      if (type === "icon") {
+        celebrationCtx.font = "22px Arial";
+        celebrationCtx.fillStyle = "#ffd700";
+        celebrationCtx.fillText(particle.icon, particle.x, particle.y);
+      } else {
+        celebrationCtx.beginPath();
+        celebrationCtx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        celebrationCtx.fillStyle = particle.color;
+        celebrationCtx.fill();
+      }
+    });
+
+    celebrationCtx.globalAlpha = 1;
+    frame += 1;
+
+    if (frame < 145 && particles.some(particle => particle.life > 0)) {
+      requestAnimationFrame(draw);
+    } else {
+      celebrationCtx.clearRect(0, 0, celebrationCanvas.width, celebrationCanvas.height);
+    }
+  }
+
+  draw();
+}
+
+function goldenConfetti() {
+  const colors = ["#ffd700", "#d4af37", "#fff2a8", "#ffffff"];
+  const particles = Array.from({ length: 120 }, () => ({
+    x: Math.random() * celebrationCanvas.width,
+    y: -20,
+    vx: (Math.random() - 0.5) * 5,
+    vy: Math.random() * 4 + 3,
+    radius: Math.random() * 4 + 2,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    life: 125
+  }));
+  runCelebration(particles, "dot");
+}
+
+function acfaFireworks() {
+  const colors = ["#ffd700", "#d4af37", "#fff2a8", "#ffffff"];
+  const centerX = celebrationCanvas.width / 2;
+  const centerY = celebrationCanvas.height / 2.3;
+
+  const particles = Array.from({ length: 170 }, () => {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 6 + 2;
+    return {
+      x: centerX,
+      y: centerY,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      radius: Math.random() * 4 + 2,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      life: 115
+    };
+  });
+
+  runCelebration(particles, "dot");
+}
+
+function chessPieceBurst() {
+  const icons = ["â", "â", "â", "â", "â", "â"];
+  const centerX = celebrationCanvas.width / 2;
+  const centerY = celebrationCanvas.height / 2.3;
+
+  const particles = Array.from({ length: 75 }, () => {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 5 + 2;
+    return {
+      x: centerX,
+      y: centerY,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      icon: icons[Math.floor(Math.random() * icons.length)],
+      life: 115
+    };
+  });
+
+  runCelebration(particles, "icon");
+}
+
+function initializeCelebrations() {
+  resizeCelebrationCanvas();
+  window.addEventListener("resize", resizeCelebrationCanvas);
+  $("confettiBtn").addEventListener("click", goldenConfetti);
+  $("chessBurstBtn").addEventListener("click", chessPieceBurst);
+  $("fireworksBtn").addEventListener("click", acfaFireworks);
+}
+
+function initialize() {
+  updateGreeting();
+  setInterval(updateGreeting, 60000);
+  createCrownRain();
+  initializeCollapsibles();
+  initializeCalendarControls();
+  initializeRadio();
+  initializeCelebrations();
+  renderCalendar();
+  $("copyClubBtn").addEventListener("click", copyClubLink);
+  initializeLiveData();
+}
+
+initialize();
 </script>
 </body>
 </html>
